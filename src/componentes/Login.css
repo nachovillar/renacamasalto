@@ -1,0 +1,45 @@
+@media Fragment {
+    min-height: 100%;    
+    min-width: 100%;
+    text-align: center;
+}
+
+.logo{
+    width: 20%; 
+    display:flex;
+    text-align:center;
+    justify-content: center;
+    align-items:center;
+    margin:auto;
+}
+
+.contenedorInputs {
+    align-items: center; 
+    text-align:center;
+    padding-top:1px;
+    height:400px;
+    background-color: #E7EBFF; 
+    border-radius: 1mm ;
+    box-shadow: 2px 2px 5px #999;
+    margin: 1% 40% 4% 40%;  
+}
+.inputbox{
+    border: none;
+    padding: 0 40px 0 40px;
+    margin-top: 7%;
+}
+
+.submitButton {
+    
+    box-shadow: 2px 2px 5px #999;
+    border-radius: 1mm;
+    color: white;
+    text-align: center;
+    display: inline-block; 
+    font-size: 16px;
+    margin:30px 0 20px 0;
+  }
+  
+  .recuperarPassword:hoover{
+      color: black;
+  }

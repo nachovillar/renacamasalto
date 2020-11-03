@@ -1,39 +1,50 @@
 import React, { Fragment, useState } from 'react';
 import logo from '../imagenes/logo.png';
+import './Login.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Form } from 'react-bootstrap'
 
 const Login = () => {
+
+
+
     return ( 
         <Fragment>
-            <img src = {logo} />
+            <div>
+                <img src = {logo} className = "logo" />
+            </div>
+            <Form>
+                <div className = "contenedorInputs">
+                    
+                    <div className = "inputbox">
+                        <h2>Iniciar Sesión</h2>
 
-            <label>Rut</label>
-            <input
-                type = "text"
-                name = "rut"
-                className = "rut"
-                placeholder = "Ingrese su Rut"
-            
-            ></input>
+                        <Form.Label>RUT</Form.Label>
+                        <Form.Control type="text" placeholder="Ej: 12345678-9" />
+                    </div>
 
+                    <div className = "inputbox">
+                        <Form.Label>CONTRASEÑA</Form.Label>
+                        <Form.Control type="password" placeholder="Ingrese su contraseña" />
+                    </div>
 
-            <label>Contraseña</label>
-            <input
-                type = "password"
-                name = "password"
-                className = "password"
-                placeholder = "Ingrese su Contraseña"
-            ></input>
-
-            
-            
-            <button
-                    type = "submit"
-                    className = "button-primary"
-                >Ingresar</button>
-
+                    <div className = "submitButton">
+                        <Button
+                                variant="success"
+                                type = "submit"
+                                className = "button-primary"
+                        >Ingresar</Button>
+                    
+                    </div>
+                    
+                    <div className ="recuperarPassword">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    
+                </div>
+            </Form>
         </Fragment>
-    
-    );
+    )
 }
  
 export default Login;
