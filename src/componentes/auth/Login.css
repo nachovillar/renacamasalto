@@ -17,6 +17,7 @@
     border-radius: 1mm ;
     box-shadow: 2px 2px 5px #999;
     margin: auto;  
+    text-align: center;
 }
 .inputbox{
     border: none;
