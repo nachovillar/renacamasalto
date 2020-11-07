@@ -14,10 +14,10 @@ const Login = () => {
 
     const {rut, contrasena} = usuario;
 
-    const onChange = (e) => {
+    const onChange = e => {
         setUsuario({
         ...usuario,
-        [e.target.name] : e.target.value
+        [e.target.getAttribute('name')]: e.target.value
         })
     }
     return ( 
@@ -34,6 +34,7 @@ const Login = () => {
                         <Form.Group>
                             <Form.Label>RUT</Form.Label>
                             <Form.Control 
+                                name = "rut"
                                 type = "text" 
                                 placeholder = "Ej: 12345678-9" 
                                 value = {rut}
@@ -47,6 +48,7 @@ const Login = () => {
                         <Form.Group controlId="formBasicPassword">  
                             <Form.Label>CONTRASEÑA</Form.Label>
                             <Form.Control 
+                                name = "contrasena"
                                 type = "password" 
                                 placeholder= "Ingrese su contraseña"
                                 value = {contrasena}
