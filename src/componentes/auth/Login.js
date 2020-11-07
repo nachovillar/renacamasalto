@@ -4,6 +4,7 @@ import './Login.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import Footer from '../footer/Footer'
 
 const Login = () => {
 
@@ -22,6 +23,7 @@ const Login = () => {
     }
     return ( 
         <div className = "Login">
+            
             <div>
                 <img src = {logo} alt = "Imagen del logo de reñaca más alto" className = "logo" />
             </div>
@@ -76,7 +78,11 @@ const Login = () => {
                     
                 </div>
             </Form>
+            <div>
+                <Footer></Footer>
+            </div>
         </div>
+        
     )
 }
  
