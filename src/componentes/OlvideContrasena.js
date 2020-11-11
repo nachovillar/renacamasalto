@@ -10,9 +10,10 @@ const OlvideContrasena = () => {
 
     const [usuario, setUsuario] = useState({
         rut: '',
+        email: ''
     })
 
-    const {rut} = usuario;
+    const {rut, email} = usuario;
 
     const onChange = e => {
         setUsuario({
@@ -40,6 +41,20 @@ const OlvideContrasena = () => {
                                 type = "text" 
                                 placeholder = "Ej: 12345678-9" 
                                 value = {rut}
+                                onChange = {onChange}
+                                    
+                            />
+                        </Form.Group>
+                    </div>
+
+                    <div className = "inputbox">
+                        <Form.Group>
+                            <Form.Label>INGRESE CORREO ASOCIADO</Form.Label>
+                            <Form.Control 
+                                name = "email"
+                                type = "email" 
+                                placeholder = "ejemplo@example.ej" 
+                                value = {email}
                                 onChange = {onChange}
                                     
                             />
