@@ -4,7 +4,7 @@ import './Login.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import Footer from '../footer/Footer'
+import Footer from '../layout/Footer'
 
 const Login = () => {
 

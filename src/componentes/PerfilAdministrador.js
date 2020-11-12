@@ -1,7 +1,14 @@
-import React from 'react'; 
-
+import React from 'react'
+import Barra from './layout/Barra'
 const PerfilAdministrador = () => {
-    return ( <></> );
+
+    return ( 
+
+        <div className = "perfil-admin">
+            <Barra/>
+        </div>
+
+    );
 }
  
 export default PerfilAdministrador;
