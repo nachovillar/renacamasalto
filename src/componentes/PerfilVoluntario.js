@@ -4,4 +4,4 @@ const PerfilVoluntario = () => {
     return ( <></> );
 }
  
-export default PerfilVoluntar<></>io;
+export default PerfilVoluntario;

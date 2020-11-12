@@ -4,4 +4,4 @@ const PerfilAdministrador = () => {
     return ( <></> );
 }
  
-export default PerfilAdministrad<></>or;
+export default PerfilAdministrador;
