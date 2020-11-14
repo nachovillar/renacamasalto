@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form } from 'react-bootstrap'
-import './NuevaActividad.css'
+import './FormActividad.css'
 
 const NuevaActividad = () => {
 
     const [actividad, guardarActividad] = useState({
-        nombreActividad: ''
+        nombreActividad: '',
+        fechaInicio: '',
+        fechaTermino: ''
     })
 
-    const {nombreActividad} = actividad
+    const {nombreActividad, fechaInicio, fechaTermino} = actividad
 
     const onChangeActividad = e => {
         guardarActividad({
@@ -35,6 +37,32 @@ const NuevaActividad = () => {
                             type = "text" 
                             placeholder = "Ingrese el nombre de la actividad"
                             value = {nombreActividad}
+                            onChange = {onChangeActividad}       
+                        />
+                    </Form.Group>
+                </div>
+
+                <div className = "inputbox">
+                    <Form.Group controlId="dob">
+                        <Form.Label>Fecha de Inicio</Form.Label>
+                        <Form.Control 
+                            name = "fechaInicio"
+                            type = "date" 
+                            placeholder = "Ingrese el nombre de la actividad"
+                            value = {fechaInicio}
+                            onChange = {onChangeActividad}       
+                        />
+                    </Form.Group>
+                </div>
+
+                <div className = "inputbox">
+                    <Form.Group controlId="dob">
+                        <Form.Label>Fecha de Término</Form.Label>
+                        <Form.Control 
+                            name = "fechaTermino"
+                            type = "date" 
+                            placeholder = "Ingrese el nombre de la actividad"
+                            value = {fechaTermino}
                             onChange = {onChangeActividad}       
                         />
                     </Form.Group>

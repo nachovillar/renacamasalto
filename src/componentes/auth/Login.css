@@ -34,6 +34,7 @@
     display: inline-block; 
     font-size: 16px;
     margin:30px 0 20px 0;
+    background-color: #3AFF36;
   }
   
   .recuperarPassword:hoover{

@@ -2,10 +2,9 @@ import './App.css'
 import React from 'react'
 import Login from './componentes/auth/Login'
 import OlvideContrasena from './componentes/OlvideContrasena'
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import PerfilAdministrador from './componentes/Perfiles/PerfilAdministrador'
-import PerfilVoluntario from './componentes/Perfiles/PerfilVoluntario'
+import PerfilAdministrador from './componentes/Perfiles/administrador/PerfilAdministrador'
+import PerfilVoluntario from './componentes/Perfiles/voluntario/PerfilVoluntario'
 
 
 function App() {
