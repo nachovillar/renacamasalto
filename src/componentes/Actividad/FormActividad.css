@@ -2,12 +2,11 @@
     padding: 1rem
 }
 
-.inputbox{
-    padding-top: 0rem;
-    width: 10rem;
-}
-
 .button-danger{
     background: #F92438;
     color: #ffffff
+}
+
+.button-primary{
+    background: #3AFF36;
 }

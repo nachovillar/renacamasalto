@@ -5,15 +5,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Footer from '../layout/Footer'
+import axios from 'axios'
 
 const Login = () => {
 
     const [usuario, setUsuario] = useState({
-        rut: '',
-        contrasena: ''
+        id_rut: '',
+        password: ''
     })
 
-    const {rut, contrasena} = usuario;
+    const {id_rut, password} = usuario;
 
     const onChange = e => {
         setUsuario({
@@ -21,6 +22,17 @@ const Login = () => {
         [e.target.getAttribute('name')]: e.target.value
         })
     }
+	const submitHandler = e => {
+		e.preventDefault()
+		console.log(usuario)
+		let json = 'json=' + JSON.stringify(usuario)
+		axios.post('https://api.chilo.team/api/login',json)
+			.then(response => {
+				console.log(response)
+			}).catch(error => {
+				console.log(error)
+			})
+	}
     return ( 
         <div className = "Login">
             
@@ -28,7 +40,7 @@ const Login = () => {
                 <img src = {logo} alt = "Imagen del logo de reñaca más alto" className = "logo" />
             </div>
 
-            <Form>
+            <Form onSubmit = {submitHandler}>
                 <div className = "contenedorInputs">
                     
                     <div className = "inputbox">
@@ -36,10 +48,10 @@ const Login = () => {
                         <Form.Group>
                             <Form.Label>RUT</Form.Label>
                             <Form.Control 
-                                name = "rut"
+                                name = "id_rut"
                                 type = "text" 
                                 placeholder = "Ej: 12345678-9" 
-                                value = {rut}
+                                value = {id_rut}
                                 onChange = {onChange}
                                     
                             />
@@ -50,10 +62,10 @@ const Login = () => {
                         <Form.Group controlId="formBasicPassword">  
                             <Form.Label>CONTRASEÑA</Form.Label>
                             <Form.Control 
-                                name = "contrasena"
+                                name = "password"
                                 type = "password" 
                                 placeholder= "Ingrese su contraseña"
-                                value = {contrasena}
+                                value = {password}
                                 onChange = {onChange}
                                 
                             />
