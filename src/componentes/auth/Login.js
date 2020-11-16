@@ -26,7 +26,7 @@ const Login = () => {
 		e.preventDefault()
 		console.log(usuario)
 		let json = 'json=' + JSON.stringify(usuario)
-		axios.post('http://192.168.0.38/api/login',json)
+		axios.post('https://api.chilo.team/api/login',json)
 			.then(response => {
 				console.log(response)
 			}).catch(error => {
