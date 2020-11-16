@@ -1,23 +1,39 @@
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #F92438;
-    padding: 0.5rem;
-  }
-  .username {
-    color: #FFFFFF;
-    font-size: 2.2rem;
-    margin: 0;
-  }
-  .nombre-usuario span {
-    margin-left: 10rem;
-  }
+.contenedorBarra{
+  background-color: whitesmoke;
+  border-bottom: 1px solid thistle;
+}
 
-  .nav-principal a {
-    color: #FFFFFF;
-    
-  }
-  .nav-principal a:first-of-type {
-    margin-right: 2rem;
-  }
+.logoBarra{
+  height: 90px;
+}
+
+.imgPerfil{
+  height: 55px;
+  border-radius: 150px;
+}
+
+.menu:hover{
+  color:red;
+  border-bottom: 3px solid red;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  color: black;
+  background-color: unset;
+}
+.dropdown-item.active:hover, .dropdown-item:active:hover {
+  color: white;
+  background-color: red;
+}
+.img_Perfil{
+  text-align: center;
+}
+
+.dropdown-toggle::after{
+  content: none;
+}
+
+.perfilUsuario{
+  
+}
+

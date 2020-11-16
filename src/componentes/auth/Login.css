@@ -23,6 +23,7 @@
     border: none;
     padding: 0 40px 0 40px;
     margin-top: 7%;
+    width: 100% !important;
 }
 
 .submitButton {

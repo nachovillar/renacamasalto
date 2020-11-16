@@ -3,6 +3,7 @@ import React from 'react'
 import Login from './componentes/auth/Login'
 import OlvideContrasena from './componentes/OlvideContrasena'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PerfilAdministrador from './componentes/Perfiles/PerfilAdministrador'
 import PerfilVoluntario from './componentes/Perfiles/PerfilVoluntario'
@@ -10,6 +11,7 @@ import PerfilVoluntario from './componentes/Perfiles/PerfilVoluntario'
 
 function App() {
   return (
+    
     <Router>
       <Switch>
         <Route exact path = "/" component = {Login}    />
@@ -18,6 +20,7 @@ function App() {
         <Route exact path = "/pefil-voluntario" component = {PerfilVoluntario} />
       </Switch>
     </Router>
+    
   );
 }
 
