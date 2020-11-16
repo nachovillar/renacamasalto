@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form } from 'react-bootstrap'
 import './FormActividad.css'
 
-import actividadContext from '../../context/ActividadContext'
+import actividadContext from '../../context/actividad/ActividadContext'
 
 const FormActividad = () => {
 

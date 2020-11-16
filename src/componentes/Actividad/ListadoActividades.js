@@ -1,22 +1,17 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Actividad from './Actividad'
+import actividadContext from '../../context/actividad/ActividadContext'
 
 const ListadoActividades = () => {
 
-    var listaActividades = [
-        {nombre: 'La weaita de actividad',
-         fechaInicio: '10-12-2020',
-         fechaFin : '23-12-2020'
-        },
-        {nombre: 'La tonterita de actividad',
-         fechaInicio: '10-12-2020',
-         fechaFin : '23-12-2020'
-        },
-        {nombre: 'La basurita de actividad',
-         fechaInicio: '10-12-2020',
-         fechaFin : '23-12-2020'
-        }
-    ]
+    const ActividadesContext = useContext(actividadContext)
+    const { listaActividades, obtenerActividades } = ActividadesContext
+
+    useEffect(() => {
+        obtenerActividades()
+    }, [])
+
+    if(listaActividades.length === 0) return null
 
     return (  
 
@@ -26,6 +21,7 @@ const ListadoActividades = () => {
                     ?   (<li className = "actividad"><p>No Hay Tareas en su Calendario</p></li>)
                     :   listaActividades.map(actividad => (
                             <Actividad 
+                                key = {actividad.id}
                                 actividad = {actividad}
                             />
     
