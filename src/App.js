@@ -6,13 +6,13 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PerfilAdministrador from './componentes/Perfiles/administrador/PerfilAdministrador'
 import PerfilVoluntario from './componentes/Perfiles/voluntario/PerfilVoluntario'
 
-import State from './context/ActividadState'
+import ActividadState from './context/actividad/ActividadState'
 
 
 function App() {
 
   return (
-    <State>
+    <ActividadState>
       <Router>
         <Switch>
           <Route exact path = "/" component = {Login}    />
@@ -21,7 +21,7 @@ function App() {
           <Route exact path = "/pefil-voluntario" component = {PerfilVoluntario} />
         </Switch>
       </Router>
-    </State>
+    </ActividadState>
   );
 }
 
