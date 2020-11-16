@@ -14,17 +14,16 @@ import ActividadState from './context/actividad/ActividadState'
 function App() {
 
   return (
-  <ActividadState>
-    <Router>
+    <ActividadState>
+      <Router>
       <Switch>
         <Route exact path = "/" component = {Login}    />
         <Route exact path = "/olvide-contrasena" component = {OlvideContrasena} />
         <Route exact path = "/perfil-admin" component = {PerfilAdministrador} />
         <Route exact path = "/pefil-voluntario" component = {PerfilVoluntario} />
       </Switch>
-    </Router>
-  </ActividadState>
-    
+      </Router>
+    </ActividadState>
   );
 }
 
