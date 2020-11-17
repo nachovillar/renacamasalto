@@ -1,4 +1,8 @@
-import { FORMULARIO_ACTIVIDAD, OBTENER_ACTIVIDADES } from '../../types'
+import {FORMULARIO_ACTIVIDAD,
+        OBTENER_ACTIVIDADES,
+        AGREGAR_ACTIVIDAD,
+        VALIDAR_FORMULARIO
+        } from '../../types'
 
 export default (state, action) => {
     switch(action.type) {
@@ -13,6 +17,19 @@ export default (state, action) => {
             return {
                 ...state,
                 listaActividades: action.payload
+            }
+        
+        case AGREGAR_ACTIVIDAD:
+            return {
+                ...state,
+                listaActividades: [...state.listaActividades, action.payload],
+                formulario: false,
+                errorformulario: false
+            }
+        case VALIDAR_FORMULARIO:
+            return{
+                ...state,
+                errorformulario: true
             }
 
         default: 

@@ -8,7 +8,7 @@ import actividadContext from '../../context/actividad/ActividadContext'
 const FormActividad = () => {
 
     const actividadesContext = useContext(actividadContext)
-    const { formulario , mostrarFormulario } = actividadesContext
+    const { formulario , errorformulario, mostrarFormulario, agregarActividad, mostrarError } = actividadesContext
 
     const [actividad, guardarActividad] = useState({
         nombreActividad: '',
@@ -24,6 +24,24 @@ const FormActividad = () => {
             [e.target.getAttribute('name')]: e.target.value
         })
     }
+
+    const onSubmitActividad = e => {
+        e.preventDefault()
+
+        if(nombreActividad === ''){
+            mostrarError()
+            return
+        }
+
+        agregarActividad(actividad)
+
+        guardarActividad({
+            nombreActividad: '',
+            fechaInicio: '',
+            fechaTermino: ''
+        })
+
+    }
     
     return (
         <Fragment>
@@ -37,7 +55,7 @@ const FormActividad = () => {
 
                 {formulario
                     ?(
-                        <Form>
+                        <Form onSubmit = {onSubmitActividad}>
                             <div className = "inputbox">
                                 <Form.Group>
                                     <Form.Label>Nombre Actividad</Form.Label>
@@ -82,7 +100,7 @@ const FormActividad = () => {
                                         variant = "success"
                                         type = "submit"
                                         className = "button-primary"
-                                        
+
                                 >Ingresar</Button>
                             
                             </div>
@@ -90,6 +108,11 @@ const FormActividad = () => {
                         </Form>
                     ) : null 
                 
+                }
+
+                {errorformulario
+                    ? <p className = "mensaje-error">El Nombre de la Actividad es Obligatorio</p>
+                    : null
                 }
 
             </div>
