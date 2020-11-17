@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useContext } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button, Form } from 'react-bootstrap'
 import './FormActividad.css'
 

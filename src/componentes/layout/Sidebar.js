@@ -1,4 +1,5 @@
 import React from 'react'
+import FormActividad from '../Actividad/FormActividad'
 
 const Sidebar = (login) => {
     const tipoLogin = login.tipo
@@ -22,7 +23,10 @@ const Sidebar = (login) => {
 
     else{
         return(
-            <a href = '#/'>Eventos</a>
+            <aside>
+                <FormActividad/>
+            </aside>
+            
         )
     }
 }

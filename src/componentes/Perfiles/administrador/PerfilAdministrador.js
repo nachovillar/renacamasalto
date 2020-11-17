@@ -2,7 +2,7 @@ import React from 'react'
 import Barra from '../../layout/Barra'
 import Sidebar from '../../layout/Sidebar'
 import './PerfilAdministrador.css'
-import FormActividad from '../../Actividad/FormActividad'
+// import FormActividad from '../../Actividad/FormActividad'
 import ListadoActividades from '../../Actividad/ListadoActividades'
 
 const PerfilAdministrador = (login) => {
@@ -15,22 +15,17 @@ const PerfilAdministrador = (login) => {
             </div>
             <div className = "cuerpo-perfil-admin">
                 <div className = "sidebar">
-                    <Sidebar
-                
-                    />
-
-                    <div>
-                        <main>
-                            <FormActividad/>
-
-                            <div className = "contenedor-actividades">
-                                <ListadoActividades/>
-                            </div>
-                        </main>
-                    </div>
+                    <aside>
+                        <Sidebar/>
+                    </aside>   
                 </div>
-
-                
+                <div>
+                    <main>
+                        <div className = "contenedor-actividades">
+                            <ListadoActividades/>
+                        </div>
+                    </main>
+                </div>
             </div>
             
             
