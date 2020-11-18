@@ -1,9 +1,11 @@
 import React from 'react'
 import Barra from '../../layout/Barra'
 import Sidebar from '../../layout/Sidebar'
+import Footer from '../../layout/Footer'
 import './PerfilAdministrador.css'
 // import FormActividad from '../../Actividad/FormActividad'
 import ListadoActividades from '../../Actividad/ListadoActividades'
+
 
 const PerfilAdministrador = (login) => {
     
@@ -27,7 +29,9 @@ const PerfilAdministrador = (login) => {
                     </main>
                 </div>
             </div>
-            
+            <div>
+                <Footer/>
+            </div>
             
         </div>
         
