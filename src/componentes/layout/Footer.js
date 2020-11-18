@@ -1,10 +1,9 @@
 import React from 'react';
 import './Footer.css';
 
-
 const Footer = () => {
     return ( 
-        <div className="main-footer fixed-bottom">
+        <div className="main-footer">
             <div className="container-fluid footer">
                 <ul>
                     <li>Copyright © Todos los derechos reservados.</li> |
