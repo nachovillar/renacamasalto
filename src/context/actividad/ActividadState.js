@@ -4,7 +4,8 @@ import reducer from './ActividadReducer'
 import { FORMULARIO_ACTIVIDAD,
          OBTENER_ACTIVIDADES,
          AGREGAR_ACTIVIDAD,
-         VALIDAR_FORMULARIO
+         VALIDAR_FORMULARIO,
+         ELIMINAR_ACTIVIDAD
         } from '../../types'
 
 import { v4 as uuidv4 } from 'uuid'
@@ -15,7 +16,7 @@ const listaActividades = [
         {id: 1,
          nombreActividad: 'La weaita de actividad',
          fechaInicio: '10-12-2020',
-         fechaTermino : '23-12-2020'
+         fechaTermino : '23-12-2020',
         },
         {id: 2,
          nombreActividad: 'La tonterita de actividad',
@@ -66,6 +67,13 @@ const listaActividades = [
         })
     }
 
+    const eliminarActividad = id => {
+        dispatch({
+            type: ELIMINAR_ACTIVIDAD,
+            payload: id
+        })
+    }
+
     return(
         <actividadContext.Provider
             value = {{
@@ -75,7 +83,8 @@ const listaActividades = [
                 mostrarFormulario,
                 obtenerActividades,
                 agregarActividad,
-                mostrarError
+                mostrarError,
+                eliminarActividad
                 
             }}
         >

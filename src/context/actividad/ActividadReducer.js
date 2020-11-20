@@ -1,7 +1,8 @@
 import {FORMULARIO_ACTIVIDAD,
         OBTENER_ACTIVIDADES,
         AGREGAR_ACTIVIDAD,
-        VALIDAR_FORMULARIO
+        VALIDAR_FORMULARIO,
+        ELIMINAR_ACTIVIDAD
         } from '../../types'
 
 export default (state, action) => {
@@ -22,7 +23,7 @@ export default (state, action) => {
         case AGREGAR_ACTIVIDAD:
             return {
                 ...state,
-                listaActividades: [...state.listaActividades, action.payload],
+                listaActividades: [ action.payload, ...state.listaActividades],
                 formulario: false,
                 errorformulario: false
             }
@@ -31,7 +32,12 @@ export default (state, action) => {
                 ...state,
                 errorformulario: true
             }
-
+        
+        case ELIMINAR_ACTIVIDAD:
+            return{
+                ...state,
+                listaActividades: state.listaActividades.filter(actividad => actividad.id !== action.payload)
+            }
         default: 
             return state
     }
