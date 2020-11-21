@@ -8,7 +8,8 @@ import actividadContext from '../../context/actividad/ActividadContext'
 const FormActividad = () => {
 
     const actividadesContext = useContext(actividadContext)
-    const { actividadSeleccionada ,formulario , errorformulario, mostrarFormulario, agregarActividad, mostrarError, editarActividad } = actividadesContext
+    const { actividadSeleccionada ,formulario , errorformulario,
+            mostrarFormulario, agregarActividad, mostrarError, editarActividad, ocultarFormulario } = actividadesContext
 
     
 
@@ -23,6 +24,7 @@ const FormActividad = () => {
 
         if(actividadSeleccionada !== null){
             guardarActividad(actividadSeleccionada)
+            
         }
         else{
             guardarActividad({
@@ -57,8 +59,11 @@ const FormActividad = () => {
 
         if(actividadSeleccionada === null){
             agregarActividad(actividad)
+            ocultarFormulario()
+            
         } else {
             editarActividad(actividad)
+            ocultarFormulario()
         }
 
         guardarActividad({

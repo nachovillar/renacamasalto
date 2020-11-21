@@ -7,7 +7,8 @@ import { FORMULARIO_ACTIVIDAD,
          VALIDAR_FORMULARIO,
          ELIMINAR_ACTIVIDAD,
          ACTIVIDAD_ACTUAL,
-         ACTUALIZAR_ACTIVIDAD
+         ACTUALIZAR_ACTIVIDAD,
+         OCULTAR_FORMULARIO
         } from '../../types'
 
 import { v4 as uuidv4 } from 'uuid'
@@ -90,6 +91,12 @@ const listaActividades = [
             payload: actividad
         })
     }
+
+    const ocultarFormulario = () => {
+        dispatch({
+            type: OCULTAR_FORMULARIO
+        })
+    }
     return(
         <actividadContext.Provider
             value = {{
@@ -103,7 +110,8 @@ const listaActividades = [
                 mostrarError,
                 eliminarActividad,
                 guardarActividadActual,
-                editarActividad
+                editarActividad,
+                ocultarFormulario
                 
             }}
         >
