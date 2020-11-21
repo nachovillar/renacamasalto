@@ -9,10 +9,14 @@
 .listadoEventos{
     background-color: whitesmoke;
     width: 100%;
+    padding-bottom: 1rem;
 }
 .contenedor-evento{
     padding: 1rem;   
-    border-bottom: 2px solid black;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 3px 5px 0px;
 }
 
 h3{

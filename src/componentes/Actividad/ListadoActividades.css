@@ -4,7 +4,10 @@
 
 .titEvento{
     text-align: center;
-    border: 2px solid black;;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 3px 1px 1px 1px;
+    margin-bottom: 1rem;
 }
 
 .listado-actividades{
