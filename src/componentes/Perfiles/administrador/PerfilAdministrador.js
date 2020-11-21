@@ -15,18 +15,20 @@ const PerfilAdministrador = (login) => {
             <div>
                 <Barra/>
             </div>
-            <div className = "cuerpo-perfil-admin">
-                <div className = "sidebar">
-                    <aside>
-                        <Sidebar/>
-                    </aside>   
-                </div>
-                <div className="eventos">
-                    <main>
-                        <div className = "contenedor-actividades">
-                            <ListadoActividades/>
-                        </div>
-                    </main>
+            <div className = "cuerpo-perfil-admin container-fluid">
+                <div className="row">
+                    <div className = "sidebar col-sm-12 col-md-4">
+                        <aside>
+                            <Sidebar/>
+                        </aside>   
+                    </div>
+                    <div className="eventos col-sm-12 col-md-8">
+                        <main>
+                            <div className = "contenedor-actividades">
+                                <ListadoActividades/>
+                            </div>
+                        </main>
+                    </div>
                 </div>
             </div>
             <div>
