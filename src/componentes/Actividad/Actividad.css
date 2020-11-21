@@ -1,0 +1,32 @@
+.botones{
+    text-align: center;
+}
+
+.botonEvent{
+    margin: 0 0.5rem;
+}
+
+.listadoEventos{
+    background-color: whitesmoke;
+    width: 100%;
+}
+.contenedor-evento{
+    padding: 1rem;   
+    border-bottom: 2px solid black;
+}
+
+h3{
+    font-size: 20px;
+    text-align: center;
+}
+
+.fechasEvento{
+    width: 100%;
+    display: flex;
+    text-align: center;
+}
+
+.fechaE{
+    margin: 0 auto;
+}
+

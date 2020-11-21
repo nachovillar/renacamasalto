@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'react-bootstrap'
 import actividadContext from '../../context/actividad/ActividadContext'
+import './Actividad.css'
 
 const Actividad = ({actividad}) => {
 
@@ -21,19 +22,29 @@ const Actividad = ({actividad}) => {
     return (  
         <div>
             <li>
-                <div>
-                    <h3>Nombre: {actividad.nombreActividad} Fecha de Inicio: {actividad.fechaInicio} Fecha de Fin: {actividad.fechaTermino}</h3>
-                    <Button variant = "info">Info</Button>
+                <div className="contenedor-evento">
+                    <div>
+                        <h3>Nombre</h3><p>{actividad.nombreActividad}</p>
+                    </div>
+                    <div className="fechasEvento">
+                        <div className="fechaE"><h3>Fecha de Inicio</h3><p>{actividad.fechaInicio}</p></div>
+                        <div className="fechaE"><h3>Fecha de Término</h3><p>{actividad.fechaTermino}</p></div>
+                    </div>
+                    <div className="botones">
+                    <Button className="botonEvent" variant = "info">Info</Button>
 
-                    <Button
+                    <Button 
+                        className="botonEvent"
                         variant = "primary"
                         onClick = {() => seleccionarActividad(actividad)}
                     >Editar</Button>
 
                     <Button 
+                        className="botonEvent"
                         variant = "danger"
                         onClick = {() => deleteActividad(actividad.id)}
                     >Eliminar</Button>
+                    </div>
                 </div>
             </li>
         </div>

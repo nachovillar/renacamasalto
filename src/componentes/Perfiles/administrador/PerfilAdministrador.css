@@ -1,4 +1,11 @@
 .cuerpo-perfil-admin{
     display: flex;
 }
+.sidebar{
+    display: flex;
+}
 
+.eventos{
+    width: 100%;
+    padding: 0 1rem;
+}

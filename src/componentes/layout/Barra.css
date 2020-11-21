@@ -1,6 +1,7 @@
 .contenedorBarra{
   background-color: whitesmoke;
   border-bottom: 1px solid thistle;
+  margin-bottom: 1rem;
 }
 
 .logoBarra{

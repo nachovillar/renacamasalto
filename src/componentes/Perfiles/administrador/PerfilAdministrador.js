@@ -21,7 +21,7 @@ const PerfilAdministrador = (login) => {
                         <Sidebar/>
                     </aside>   
                 </div>
-                <div>
+                <div className="eventos">
                     <main>
                         <div className = "contenedor-actividades">
                             <ListadoActividades/>

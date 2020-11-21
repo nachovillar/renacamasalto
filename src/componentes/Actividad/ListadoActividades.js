@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import Actividad from './Actividad'
 import actividadContext from '../../context/actividad/ActividadContext'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import './ListadoActividades.css'
 
 const ListadoActividades = () => {
 
@@ -16,7 +17,8 @@ const ListadoActividades = () => {
 
     return (  
 
-        <div>
+        <div className="listadoEventos">
+            <h2 className="titEvento">Eventos</h2>
             <ul className = "listado-actividades">
                 {listaActividades.length === 0
                     ?   (<li className = "actividad"><p>No Hay Tareas en su Calendario</p></li>)

@@ -1,0 +1,13 @@
+.listadoEventos{
+    background-color: whitesmoke;
+}
+
+.titEvento{
+    text-align: center;
+    border: 2px solid black;;
+}
+
+.listado-actividades{
+    list-style: none;
+    padding-right: 40px;
+}

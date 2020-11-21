@@ -84,11 +84,11 @@ const FormActividad = () => {
                         <Form onSubmit = {onSubmitActividad}>
                             <div className = "inputbox">
                                 <Form.Group>
-                                    <Form.Label>Nombre Actividad</Form.Label>
+                                    <Form.Label>Nombre Evento</Form.Label>
                                     <Form.Control 
                                         name = "nombreActividad"
                                         type = "text" 
-                                        placeholder = "Ingrese el nombre de la actividad"
+                                        placeholder = "Nombre del evento"
                                         value = {nombreActividad}
                                         onChange = {onChangeActividad}       
                                     />
