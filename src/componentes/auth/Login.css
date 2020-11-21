@@ -41,3 +41,10 @@
   .recuperarPassword:hoover{
       color: black;
   }
+
+  .footerLogin{
+      position: fixed;
+      bottom: 0px;
+      clear: both;
+      width: 100%;
+  }
