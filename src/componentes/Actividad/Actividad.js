@@ -23,7 +23,7 @@ const Actividad = ({actividad}) => {
         <div>
             <li>
                 <div className="contenedor-evento">
-                    <div>
+                    <div className="nombreE">
                         <h3>Nombre</h3><p>{actividad.nombreActividad}</p>
                     </div>
                     <div className="fechasEvento">
