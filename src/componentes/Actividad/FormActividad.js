@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from 'react'
+import React, { Fragment, useState, useContext, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button, Form } from 'react-bootstrap'
 import './FormActividad.css'
@@ -8,7 +8,9 @@ import actividadContext from '../../context/actividad/ActividadContext'
 const FormActividad = () => {
 
     const actividadesContext = useContext(actividadContext)
-    const { formulario , errorformulario, mostrarFormulario, agregarActividad, mostrarError } = actividadesContext
+    const { actividadSeleccionada ,formulario , errorformulario, mostrarFormulario, agregarActividad, mostrarError, editarActividad } = actividadesContext
+
+    
 
     const [actividad, guardarActividad] = useState({
         nombreActividad: '',
@@ -16,9 +18,29 @@ const FormActividad = () => {
         fechaTermino: ''
     })
 
+
+    useEffect(() =>{
+
+        if(actividadSeleccionada !== null){
+            guardarActividad(actividadSeleccionada)
+        }
+        else{
+            guardarActividad({
+                nombreActividad: '',
+                fechaInicio: '',
+                fechaTermino: ''
+
+            })
+        }
+
+    }, [actividadSeleccionada])
+
     const {nombreActividad, fechaInicio, fechaTermino} = actividad
 
+    
+
     const onChangeActividad = e => {
+
         guardarActividad({
             ...actividad,
             [e.target.getAttribute('name')]: e.target.value
@@ -28,12 +50,16 @@ const FormActividad = () => {
     const onSubmitActividad = e => {
         e.preventDefault()
 
-        if(nombreActividad === ''){
+        if(nombreActividad === '' || fechaInicio === '' || fechaTermino === ''){
             mostrarError()
             return
         }
 
-        agregarActividad(actividad)
+        if(actividadSeleccionada === null){
+            agregarActividad(actividad)
+        } else {
+            editarActividad(actividad)
+        }
 
         guardarActividad({
             nombreActividad: '',
@@ -51,7 +77,7 @@ const FormActividad = () => {
                     variant = "danger"
                     type = "button"
                     onClick = {() => mostrarFormulario()}
-                >Nueva Actividad</Button>
+                >Nuevo Evento</Button>
 
                 {formulario
                     ?(
@@ -101,7 +127,7 @@ const FormActividad = () => {
                                         type = "submit"
                                         className = "button-primary"
 
-                                >Ingresar</Button>
+                    >{ actividadSeleccionada ? 'Editar' : 'Agregar' }</Button>
                             
                             </div>
             
@@ -111,7 +137,7 @@ const FormActividad = () => {
                 }
 
                 {errorformulario
-                    ? <p className = "mensaje-error">El Nombre de la Actividad es Obligatorio</p>
+                    ? <p className = "mensaje-error">Recuerde que los campos de nombre y fechas son obligtorios</p>
                     : null
                 }
 

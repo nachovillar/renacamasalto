@@ -5,11 +5,17 @@ import actividadContext from '../../context/actividad/ActividadContext'
 
 const Actividad = ({actividad}) => {
 
-    const { eliminarActividad, obtenerActividades} = useContext(actividadContext)
+    const actividadesContext  = useContext(actividadContext)
+    const { eliminarActividad, obtenerActividades, guardarActividadActual, mostrarFormulario } = actividadesContext
 
     const deleteActividad = id => {
         eliminarActividad(id)
         obtenerActividades()
+    }
+
+    const seleccionarActividad = actividad =>{
+        guardarActividadActual(actividad)
+        mostrarFormulario()
     }
 
     return (  
@@ -18,7 +24,12 @@ const Actividad = ({actividad}) => {
                 <div>
                     <h3>Nombre: {actividad.nombreActividad} Fecha de Inicio: {actividad.fechaInicio} Fecha de Fin: {actividad.fechaTermino}</h3>
                     <Button variant = "info">Info</Button>
-                    <Button variant = "primary">Editar</Button>
+
+                    <Button
+                        variant = "primary"
+                        onClick = {() => seleccionarActividad(actividad)}
+                    >Editar</Button>
+
                     <Button 
                         variant = "danger"
                         onClick = {() => deleteActividad(actividad.id)}

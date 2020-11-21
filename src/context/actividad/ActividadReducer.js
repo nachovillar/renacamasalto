@@ -2,7 +2,9 @@ import {FORMULARIO_ACTIVIDAD,
         OBTENER_ACTIVIDADES,
         AGREGAR_ACTIVIDAD,
         VALIDAR_FORMULARIO,
-        ELIMINAR_ACTIVIDAD
+        ELIMINAR_ACTIVIDAD,
+        ACTIVIDAD_ACTUAL,
+        ACTUALIZAR_ACTIVIDAD
         } from '../../types'
 
 export default (state, action) => {
@@ -38,6 +40,19 @@ export default (state, action) => {
                 ...state,
                 listaActividades: state.listaActividades.filter(actividad => actividad.id !== action.payload)
             }
+
+        case ACTIVIDAD_ACTUAL:
+            return{
+                ...state,
+                actividadSeleccionada: action.payload
+            }
+        case ACTUALIZAR_ACTIVIDAD:
+            return{
+                ...state,
+                listaActividades: state.listaActividades.map(actividad => 
+                                                                actividad.id === action.payload.id ? action.payload : actividad)
+            }
+
         default: 
             return state
     }

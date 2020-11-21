@@ -5,7 +5,9 @@ import { FORMULARIO_ACTIVIDAD,
          OBTENER_ACTIVIDADES,
          AGREGAR_ACTIVIDAD,
          VALIDAR_FORMULARIO,
-         ELIMINAR_ACTIVIDAD
+         ELIMINAR_ACTIVIDAD,
+         ACTIVIDAD_ACTUAL,
+         ACTUALIZAR_ACTIVIDAD
         } from '../../types'
 
 import { v4 as uuidv4 } from 'uuid'
@@ -34,7 +36,8 @@ const listaActividades = [
         listaActividades: [
         ],
         formulario: false,
-        errorformulario: false
+        errorformulario: false,
+        actividadSeleccionada: null
     }
 
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -74,17 +77,33 @@ const listaActividades = [
         })
     }
 
+    const guardarActividadActual = actividad => {
+        dispatch({
+            type: ACTIVIDAD_ACTUAL,
+            payload: actividad
+        })
+    }
+
+    const editarActividad = actividad => {
+        dispatch({
+            type: ACTUALIZAR_ACTIVIDAD,
+            payload: actividad
+        })
+    }
     return(
         <actividadContext.Provider
             value = {{
                 listaActividades: state.listaActividades,
                 formulario: state.formulario,
                 errorformulario: state.errorformulario,
+                actividadSeleccionada: state.actividadSeleccionada,
                 mostrarFormulario,
                 obtenerActividades,
                 agregarActividad,
                 mostrarError,
-                eliminarActividad
+                eliminarActividad,
+                guardarActividadActual,
+                editarActividad
                 
             }}
         >
