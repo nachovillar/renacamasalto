@@ -15,17 +15,22 @@ const Barra = () => {
                     <Nav className="mx-auto text-center barraMenu">
                         <Nav.Link className="menu" href="#">Inicio</Nav.Link>
                         <NavDropdown className="menu" title="Programas" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#">Reforzamiento Escolar</NavDropdown.Item>
+                            <NavDropdown.Item href="#">Nueva Sesión</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#">Comedor Solidario</NavDropdown.Item>
+                            <NavDropdown.Item href="#">Opcion2</NavDropdown.Item>
                        </NavDropdown>
                         <NavDropdown className="menu" title="Eventos" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#">Opcion1</NavDropdown.Item>
+                            <NavDropdown.Item href="#">Lista de Eventos</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#">Opcion2</NavDropdown.Item>                           
                         </NavDropdown>
-                        <NavDropdown className="menu" title="Administración" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#">Opcion1</NavDropdown.Item>
+                        <NavDropdown className="menu" title="Voluntarios" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="#">Crear cuenta</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item href="#">Opcion2</NavDropdown.Item>
+                        </NavDropdown>
+                        <NavDropdown className="menu" title="Beneficiarios" id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="#">Lista de Inscritos</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#">Opcion2</NavDropdown.Item>
                         </NavDropdown>
