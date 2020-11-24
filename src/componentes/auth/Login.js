@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import logo from '../../imagenes/logo.png';
 import './Login.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,13 +9,25 @@ import axios from 'axios'
 import alertaContext from '../../context/alerta/AlertaContext'
 import authContext from '../../context/auth/AuthContext' 
 
-const Login = () => {
+const Login = (props) => {
     
     const alertasContext = useContext(alertaContext)
     const { alerta, mostrarAlerta } = alertasContext
 
     const authsContext = useContext(authContext)
     const { mensaje, autenticado, iniciarSesion } = authsContext
+
+    useEffect(() =>{
+
+        if(autenticado){
+            props.history.push("/perfil-admin")
+        }
+
+        if(mensaje) {
+            mostrarAlerta(mensaje.msg, mensaje.categoria)
+        }
+
+    }, [mensaje, autenticado, props.history])
 
     const [usuario, setUsuario] = useState({
         id_rut: '',

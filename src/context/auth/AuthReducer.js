@@ -1,4 +1,4 @@
-import { 
+import { OBTENER_USUARIO,
          LOGIN_ERROR,
          LOGIN_EXITOSO,
          
@@ -19,8 +19,16 @@ export default (state, action) => {
         case LOGIN_EXITOSO:
             return {
                 ...state,
+                autenticado: true,
+                mensaje: null,
                 token: action.payload
             }
+        
+            case OBTENER_USUARIO:
+                return{
+                    ...state,
+                    usuario: action.payload
+                }
         default:
             return state
     }
