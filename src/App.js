@@ -12,9 +12,13 @@ import PerfilVoluntario from './componentes/Perfiles/voluntario/PerfilVoluntario
 import ActividadState from './context/actividad/ActividadState'
 import BeneficiarioState from './context/beneficiario/BeneficiarioState'
 import VistaCrearVoluntario from './componentes/Perfiles/voluntario/VistaCrearVoluntario'
+import AlertaState from './context/alerta/AlertaState'
+import AuthState from './context/auth/AuthState'
 
 function App() {
 
+ 
+   
   return (
     <BeneficiarioState>
     <ActividadState>
@@ -28,6 +32,18 @@ function App() {
         <Route exact path = "/crear-voluntario" component = {VistaCrearVoluntario} />
       </Switch>
       </Router>
+      <AlertaState>
+        <AuthState>
+          <Router>
+          <Switch>
+            <Route exact path = "/" component = {Login}    />
+            <Route exact path = "/olvide-contrasena" component = {OlvideContrasena} />
+            <Route exact path = "/perfil-admin" component = {PerfilAdministrador} />
+            <Route exact path = "/pefil-voluntario" component = {PerfilVoluntario} />
+          </Switch>
+          </Router>
+        </AuthState>
+      </AlertaState>
     </ActividadState>
     </BeneficiarioState>
   );
