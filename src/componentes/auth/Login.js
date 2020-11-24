@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import logo from '../../imagenes/logo.png';
 import './Login.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,8 +6,16 @@ import { Button, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Footer from '../layout/Footer'
 import axios from 'axios'
+import alertaContext from '../../context/alerta/AlertaContext'
+import authContext from '../../context/auth/AuthContext' 
 
 const Login = () => {
+    
+    const alertasContext = useContext(alertaContext)
+    const { alerta, mostrarAlerta } = alertasContext
+
+    const authsContext = useContext(authContext)
+    const { mensaje, autenticado, iniciarSesion } = authsContext
 
     const [usuario, setUsuario] = useState({
         id_rut: '',
@@ -23,15 +31,28 @@ const Login = () => {
         })
     }
 	const submitHandler = e => {
-		e.preventDefault()
-		console.log(usuario)
+        e.preventDefault()
+        
+        if(id_rut.trim() === '' || password.trim() === ''){
+            mostrarAlerta('Todos los campos son obligatorios', 'alerta-error') 
+            return
+        }
+
+        if(password.length < 4){
+            mostrarAlerta('La contraseña no contiene el formato requerido', 'alerta-error')
+            return
+        }
+
+		// console.log(usuario)
 		let json = 'json=' + JSON.stringify(usuario)
-		axios.post('https://api.chilo.team/api/login',json)
-			.then(response => {
-				console.log(response)
-			}).catch(error => {
-				console.log(error)
-			})
+		// axios.post('https://api.chilo.team/api/login',json)
+		// 	.then(response => {
+		// 		console.log(response)
+		// 	}).catch(error => {
+		// 		console.log(error)
+        //     })
+        console.log(json)
+        iniciarSesion(json)
 	}
     return ( 
         <div className = "Login">
@@ -39,7 +60,8 @@ const Login = () => {
             <div>
                 <img src = {logo} alt = "Imagen del logo de reñaca más alto" className = "logo" />
             </div>
-
+    
+            { alerta ? (<div className= "alerta ${alerta.categoria}">{alerta.msg}</div>) : null}
             <Form onSubmit = {submitHandler}>
                 <div className = "contenedorInputs">
                     
