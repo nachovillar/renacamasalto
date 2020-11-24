@@ -48,3 +48,9 @@
       clear: both;
       width: 100%;
   }
+
+  .alerta{
+      text-align: center;
+      font-weight: bold;
+      color: red;
+  }
