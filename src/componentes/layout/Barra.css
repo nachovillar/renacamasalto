@@ -13,9 +13,13 @@
   border-radius: 150px;
 }
 
+.menu{
+  font-weight: bold;
+}
+
 .menu:hover{
   color:red;
-  border-bottom: 3px solid red;
+  box-shadow: 0px 3px 0px 0px red;
 }
 
 .dropdown-item.active, .dropdown-item:active {
@@ -34,7 +38,15 @@
   content: none;
 }
 
-.perfilUsuario{
-  
+.enlace-lista-beneficiarios, .enlace-crear-voluntario, .enlace-cerrar-sesion{
+  color: black;
 }
+
+.enlace-lista-beneficiarios:hover, .enlace-crear-voluntario:hover, .enlace-cerrar-sesion:hover{
+  background-color: red;
+  color: white;
+  text-decoration: none;
+}
+
+
 

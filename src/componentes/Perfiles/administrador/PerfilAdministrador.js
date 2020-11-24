@@ -5,7 +5,7 @@ import Footer from '../../layout/Footer'
 import './PerfilAdministrador.css'
 // import FormActividad from '../../Actividad/FormActividad'
 import ListadoActividades from '../../Actividad/ListadoActividades'
-
+import ListadoBeneficiarios from '../../beneficiario/ListadoBeneficiarios'
 
 const PerfilAdministrador = (login) => {
     

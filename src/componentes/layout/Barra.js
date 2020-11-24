@@ -3,6 +3,7 @@ import './Barra.css'
 import logo from '../../imagenes/logo.png';
 import img_perfil from '../../imagenes/perfil.jpg';
 import  {Navbar,Nav, NavDropdown} from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 const Barra = () => {
     return ( 
@@ -20,17 +21,17 @@ const Barra = () => {
                             <NavDropdown.Item href="#">Opcion2</NavDropdown.Item>
                        </NavDropdown>
                         <NavDropdown className="menu" title="Eventos" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#">Lista de Eventos</NavDropdown.Item>
+                            <NavDropdown.Item href="#">Crear Evento</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="#">Opcion2</NavDropdown.Item>                           
+                            <NavDropdown.Item href="#">Lista de Eventos</NavDropdown.Item>                           
                         </NavDropdown>
                         <NavDropdown className="menu" title="Voluntarios" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#">Crear cuenta</NavDropdown.Item>
+                            <NavDropdown.Item><Link to="/crear-voluntario" className="enlace-crear-voluntario">Crear cuenta</Link></NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#">Opcion2</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown className="menu" title="Beneficiarios" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#">Lista de Inscritos</NavDropdown.Item>
+                            <NavDropdown.Item><Link to="/lista-beneficiarios" className="enlace-lista-beneficiarios">Lista de Inscritos</Link></NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#">Opcion2</NavDropdown.Item>
                         </NavDropdown>
@@ -47,7 +48,7 @@ const Barra = () => {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#">Perfil</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#">Cerrar Sesión</NavDropdown.Item>
+                                <NavDropdown.Item><Link to="/" className="enlace-cerrar-sesion">Cerrar Sesión</Link></NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     </div>
