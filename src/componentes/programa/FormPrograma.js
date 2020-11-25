@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useContext, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button, Form } from 'react-bootstrap'
-import './FormActividad.css'
+import './FormPrograma.css'
 
 import programaContext from '../../context/programa/ProgramaContext'
 
@@ -14,9 +14,8 @@ const FormPrograma = () => {
     
 
     const [programa, guardarPrograma] = useState({
+        id: '',
         nombrePrograma: '',
-        fechaInicio: '',
-        fechaTermino: ''
     })
 
 
@@ -28,16 +27,14 @@ const FormPrograma = () => {
         }
         else{
             guardarPrograma({
+                id: '',
                 nombrePrograma: '',
-                fechaInicio: '',
-                fechaTermino: ''
-
             })
         }
 
     }, [programaSeleccionado])
 
-    const {nombrePrograma, fechaInicio, fechaTermino} = programa
+    const {id, nombrePrograma} = programa
 
     
 
@@ -52,7 +49,7 @@ const FormPrograma = () => {
     const onSubmitPrograma = e => {
         e.preventDefault()
 
-        if(nombrePrograma === '' || fechaInicio === '' || fechaTermino === ''){
+        if(nombrePrograma === ''){
             mostrarError()
             return
         }
@@ -67,60 +64,34 @@ const FormPrograma = () => {
         }
 
         guardarPrograma({
+            id:'',
             nombrePrograma: '',
-            fechaInicio: '',
-            fechaTermino: ''
+            
         })
 
     }
     
     return (
         <Fragment>
-            <div className = "nueva-actividad">
+            <div className = "nuevo-programa">
                 <Button
                     className = "button-danger" 
                     variant = "danger"
                     type = "button"
                     onClick = {() => mostrarFormulario()}
-                >Nuevo Evento</Button>
+                >Nuevo Programa</Button>
 
                 {formulario
                     ?(
                         <Form onSubmit = {onSubmitPrograma}>
                             <div className = "inputbox">
                                 <Form.Group>
-                                    <Form.Label>Nombre Evento</Form.Label>
+                                    <Form.Label>Nombre</Form.Label>
                                     <Form.Control 
                                         name = "nombrePrograma"
                                         type = "text" 
-                                        placeholder = "Nombre del evento"
+                                        placeholder = "Nombre programa"
                                         value = {nombrePrograma}
-                                        onChange = {onChangePrograma}       
-                                    />
-                                </Form.Group>
-                            </div>
-            
-                            <div className = "inputbox">
-                                <Form.Group controlId="dob">
-                                    <Form.Label>Fecha de Inicio</Form.Label>
-                                    <Form.Control 
-                                        name = "fechaInicio"
-                                        type = "date" 
-                                        placeholder = "Ingrese el nombre del Programa"
-                                        value = {fechaInicio}
-                                        onChange = {onChangePrograma}       
-                                    />
-                                </Form.Group>
-                            </div>
-            
-                            <div className = "inputbox">
-                                <Form.Group controlId="dob">
-                                    <Form.Label>Fecha de Término</Form.Label>
-                                    <Form.Control 
-                                        name = "fechaTermino"
-                                        type = "date" 
-                                        placeholder = "Ingrese el nombre del programa"
-                                        value = {fechaTermino}
                                         onChange = {onChangePrograma}       
                                     />
                                 </Form.Group>
@@ -142,7 +113,7 @@ const FormPrograma = () => {
                 }
 
                 {errorformulario
-                    ? <p className = "mensaje-error">Recuerde que los campos de nombre y fechas son obligtorios</p>
+                    ? <p className = "mensaje-error">Recuerde rellenar los campos</p>
                     : null
                 }
 

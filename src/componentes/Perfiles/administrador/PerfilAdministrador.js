@@ -12,6 +12,8 @@ import VistaCrearVoluntario from '../../Perfiles/voluntario/VistaCrearVoluntario
 import VistaListaBeneficiarios from '../beneficiarios/VistaListaBeneficiarios'
 import ListadoProgramas from '../../programa/ListadoProgramas'
 import VistaEventos from '../../Perfiles/eventos/VistaEventos'
+import FormPrograma from '../../programa/FormPrograma'
+import VistaProgramas from '../programas/VistaProgramas'
 
 const PerfilAdministrador = () => {
     
@@ -32,17 +34,7 @@ const PerfilAdministrador = () => {
                     }
 
                     { programas ?
-                        <div className = "programas">
-                            <aside className = "sidebar col-sm-12 col-md-4">
-                                
-                                    <Sidebar/>
-                                
-                            </aside>
-
-                            <div className = "contenedor-actividades">
-                                <ListadoProgramas></ListadoProgramas>
-                            </div>
-                        </div>
+                        <VistaProgramas></VistaProgramas>
                         : null
                     }
 

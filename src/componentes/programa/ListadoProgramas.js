@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import Programa from './Programa'
 import programaContext from '../../context/programa/ProgramaContext'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
-//import '../Actividad/ListadoActividades.css'
+import './ListadoProgramas.css'
 
 const ListadoProgramas = () => {
 

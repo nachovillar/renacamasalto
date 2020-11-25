@@ -7,7 +7,8 @@ import { FORMULARIO_PROGRAMA,
          PROGRAMA_ACTUAL,
          ACTUALIZAR_PROGRAMA,
          OCULTAR_FORMULARIO,
-         VALIDAR_FORMULARIO
+         VALIDAR_FORMULARIO,
+         OBTENER_PROGRAMAS
         } from '../../types'
 
 import { v4 as uuidv4 } from 'uuid'
@@ -17,14 +18,27 @@ import { v4 as uuidv4 } from 'uuid'
 
 const ProgramaState = props => {
 
-   
+   const listaProgramas = [
+       {
+           id: '1',
+           nombrePrograma: 'Algo Unico'
+       },
+       {
+           id: '2',
+            nombrePrograma: 'Quien sabe'
+       },
+       {
+           id: '3',
+           nombrePrograma: 'Algo más'
+       }
+   ]
 
     const initialState = {
         listaProgramas: [
         ],
         formulario: false,
         errorformulario: false,
-        ProgramaSeleccionado: null
+        programaSeleccionado: null
     }
 
     const [state, dispatch] = useReducer(ProgramaReducer, initialState)
@@ -32,6 +46,12 @@ const ProgramaState = props => {
     const mostrarFormulario = () => {
             dispatch({
                 type: FORMULARIO_PROGRAMA
+        })
+    }
+    const obtenerProgramas = () => {
+        dispatch({
+            type: OBTENER_PROGRAMAS,
+            payload: listaProgramas
         })
     }
 
@@ -110,7 +130,7 @@ const ProgramaState = props => {
                 errorformulario: state.errorformulario,
                 programaSeleccionado: state.programaSeleccionado,
                 mostrarFormulario,
-                /*obtenerProgramas,*/
+                obtenerProgramas,
                 agregarPrograma,
                 mostrarError,
                 eliminarPrograma,
