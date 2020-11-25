@@ -38,11 +38,11 @@
   content: none;
 }
 
-.enlace-lista-beneficiarios, .enlace-crear-voluntario, .enlace-cerrar-sesion{
+.enlace-cerrar-sesion{
   color: black;
 }
 
-.enlace-lista-beneficiarios:hover, .enlace-crear-voluntario:hover, .enlace-cerrar-sesion:hover{
+.enlace-cerrar-sesion:hover{
   background-color: red;
   color: white;
   text-decoration: none;

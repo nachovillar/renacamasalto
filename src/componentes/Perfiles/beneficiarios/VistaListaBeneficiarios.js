@@ -8,9 +8,6 @@ import FormBeneficiario from '../../beneficiario/FormBeneficiario'
 const VistaListaBeneficiarios = () => {
     return(
         <div className="vista-lista-beneficiarios">
-            <div>
-                <Barra/>
-            </div>
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-sm-12 col-md-4">
@@ -20,9 +17,6 @@ const VistaListaBeneficiarios = () => {
                         <ListadoBeneficiarios/>
                     </div>
                 </div>
-            </div>
-            <div>
-                <Footer/>
             </div>
         </div>
     );

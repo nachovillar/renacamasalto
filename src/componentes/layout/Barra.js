@@ -11,7 +11,7 @@ import barraContext from '../../context/barra/BarraContext'
 const Barra = () => {
 
     const barrasContext = useContext(barraContext)
-    const { mostrarProgramas, mostrarEventos, mostrarInicio } = barrasContext
+    const { mostrarProgramas, mostrarEventos, mostrarVoluntarios, mostrarBeneficiarios, mostrarInicio } = barrasContext
 
     const onClickInicio = () => {
         mostrarInicio()
@@ -27,7 +27,13 @@ const Barra = () => {
 
     }
 
+    const onClickVoluntarios = () => {
+        mostrarVoluntarios()
+    }
 
+    const onClickBeneficiarios = () => {
+        mostrarBeneficiarios()
+    }
     return ( 
         
         <div className="container-fluid contenedorBarra">
@@ -46,16 +52,12 @@ const Barra = () => {
                             Eventos 
                                                    
                         </Nav.Link>
-                        <NavDropdown className="menu" title="Voluntarios" id="collasible-nav-dropdown">
-                            <NavDropdown.Item><Link to="/crear-voluntario" className="enlace-crear-voluntario">Crear cuenta</Link></NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#">Opcion2</NavDropdown.Item>
-                        </NavDropdown>
-                        <NavDropdown className="menu" title="Beneficiarios" id="collasible-nav-dropdown">
-                            <NavDropdown.Item><Link to="/lista-beneficiarios" className="enlace-lista-beneficiarios">Lista de Inscritos</Link></NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#">Opcion2</NavDropdown.Item>
-                        </NavDropdown>
+                        <Nav.Link className="menu" title="Voluntarios"  onClick = {() => onClickVoluntarios()}>
+                            Voluntarios
+                        </Nav.Link>
+                        <Nav.Link className="menu" title="Beneficiarios" id="collasible-nav-dropdown" onClick = {() => onClickBeneficiarios()}>
+                            Beneficiarios
+                        </Nav.Link>
                     </Nav>
                     <div className="perfilUsuario">
                         <Nav>

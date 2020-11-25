@@ -1,9 +1,10 @@
 import React from 'react'
+import construccion from '../../imagenes/construccion.png'
 
 const Inicio = () => {
     return(
 
-        <p>En Contrstrucción</p>
+        <img src={construccion}></img>
 
     )
 }

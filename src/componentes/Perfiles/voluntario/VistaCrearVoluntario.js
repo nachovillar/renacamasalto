@@ -5,21 +5,13 @@ import Barra from '../../layout/Barra'
 import construccion from '../../../imagenes/construccion.png'
 import Footer from '../../layout/Footer'
 
-const CrearVoluntario = () => {
+const VistaCrearVoluntario = () => {
 
     return(
         <div>
-            <div>
-                <Barra/>
-            </div>
-            <div>
-                <img src={construccion} className="imgConst"></img>
-            </div>
-            <div>
-                <Footer/>
-            </div>
+            <img src={construccion} className="imgConst"></img>
         </div>
     );
 }
 
-export default CrearVoluntario;
+export default VistaCrearVoluntario;
