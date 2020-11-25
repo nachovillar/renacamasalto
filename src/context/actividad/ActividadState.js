@@ -10,7 +10,7 @@ import { FORMULARIO_ACTIVIDAD,
          ACTUALIZAR_ACTIVIDAD,
          OCULTAR_FORMULARIO,
          POSTULAR_ACTIVIDAD,
-         RETIRAR_ACTIVIDAD
+         RETIRAR_ACTIVIDAD,
          EVENTOS_ERROR
         } from '../../types'
 
