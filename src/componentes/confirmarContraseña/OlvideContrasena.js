@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
-import logo from '../imagenes/logo.png';
+import logo from '../../imagenes/logo.png';
 import './OlvideContrasena.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form } from 'react-bootstrap'
-import Footer from './layout/Footer'
+import Footer from '../layout/Footer'
 import { Link } from 'react-router-dom';
 
 const OlvideContrasena = () => {

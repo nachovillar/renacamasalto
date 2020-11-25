@@ -13,6 +13,19 @@
     margin-top: 1rem;
 }
 
+.postular{
+    background: #0bd608;
+    color: #ffffff;
+    margin-top: 1rem;
+}
+
+.button-warning{
+    background: #ebfa1d;
+    color: #ffffff;
+    margin-top: 1rem;
+}
+
+
 .button-primary{
     background: #3AFF36;
 }

@@ -19,16 +19,26 @@ const Actividad = ({actividad}) => {
         mostrarFormulario()
     }
 
+    const postularActividad = id =>{
+        postularActividad(id)
+        mostrarFormulario()
+    }
+
+    const retirarActividad = id =>{
+        retirarActividad(id)
+        mostrarFormulario()
+    }
+
     return (  
         <div>
             <li>
                 <div className="contenedor-evento">
                     <div className="nombreE">
-                        <h3>Nombre</h3><p>{actividad.nombreActividad}</p>
+                        <h3>Nombre</h3><p>{actividad.nombre}</p>
                     </div>
                     <div className="fechasEvento">
-                        <div className="fechaE"><h3>Fecha de Inicio</h3><p>{actividad.fechaInicio}</p></div>
-                        <div className="fechaE"><h3>Fecha de Término</h3><p>{actividad.fechaTermino}</p></div>
+                        <div className="fechaE"><h3>Fecha de Inicio</h3><p>{actividad.fecha_hora_inicio}</p></div>
+                        <div className="fechaE"><h3>Fecha de Término</h3><p>{actividad.fecha_hora_termino}</p></div>
                     </div>
                     <div className="botones">
                     <Button className="botonEvent" variant = "info">Info</Button>
@@ -44,6 +54,16 @@ const Actividad = ({actividad}) => {
                         variant = "danger"
                         onClick = {() => deleteActividad(actividad.id)}
                     >Eliminar</Button>
+
+                    <Button
+                        className="botonEvent postular"
+                        onClick = {() => postularActividad(actividad.id)}
+                    >Inscribir a evento</Button>
+                    <Button
+                        className="botonEvent"
+                        variant = "warning"
+                        onClick = {() => retirarActividad(actividad.id)}
+                    >Desinscribir</Button>
                     </div>
                 </div>
             </li>
