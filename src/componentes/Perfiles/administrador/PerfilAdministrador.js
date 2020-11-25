@@ -11,6 +11,7 @@ import Inicio from '../../inicio/Inicio'
 import VistaCrearVoluntario from '../../Perfiles/voluntario/VistaCrearVoluntario'
 import VistaListaBeneficiarios from '../beneficiarios/VistaListaBeneficiarios'
 import ListadoProgramas from '../../programa/ListadoProgramas'
+import VistaEventos from '../../Perfiles/eventos/VistaEventos'
 
 const PerfilAdministrador = (login) => {
     
@@ -26,17 +27,7 @@ const PerfilAdministrador = (login) => {
             <div>                    
                 <main>
                     { eventos ?
-                    <div className = "evento">
-                        <aside className = "sidebar col-sm-12 col-md-4">
-                            
-                                <Sidebar/>
-                            
-                        </aside>
-
-                        <div className = "contenedor-actividades">
-                            <ListadoActividades/>
-                        </div>
-                    </div>
+                    <VistaEventos></VistaEventos>
                     : null
                     }
 
