@@ -55,15 +55,13 @@ const Login = (props) => {
             return
         }
 
+        if(password !== '7071'){
+            mostrarAlerta('La contraseña no es correcta', 'alerta-error')
+        }
+
 		// console.log(usuario)
 		let json = 'json=' + JSON.stringify(usuario)
-		// axios.post('https://api.chilo.team/api/login',json)
-		// 	.then(response => {
-		// 		console.log(response)
-		// 	}).catch(error => {
-		// 		console.log(error)
-        //     })
-        console.log(json)
+		
         iniciarSesion(json)
 	}
     return ( 

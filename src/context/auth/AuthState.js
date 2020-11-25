@@ -48,16 +48,15 @@ const AuthState = props => {
           
             dispatch({
                 type: LOGIN_EXITOSO,
-                payload: respuesta.date
+                payload: respuesta.data
             })
-            // dispatch({
-            //     type: LOGIN_EXITOSO,
-            //     payload: respuesta.data
-            // })
+             
+            usuarioAutenticado()
+
         } catch (error) {
             
             const alerta = {
-                msg: error.response,
+                msg: error.response.mensaje,
                 categoria: 'alerta-error'
             }
 
@@ -76,7 +75,8 @@ const AuthState = props => {
                 autenticado: state.autenticado,
                 usuario: state.usuario,
                 mensaje: state.mensaje,
-                iniciarSesion
+                iniciarSesion,
+                usuarioAutenticado
             }}
         >
             {props.children}

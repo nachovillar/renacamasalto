@@ -1,7 +1,7 @@
 import './App.css'
 import React from 'react'
 import Login from './componentes/auth/Login'
-import OlvideContrasena from './componentes/OlvideContrasena'
+import OlvideContrasena from './componentes/confirmarContraseña/OlvideContrasena'
 import VistaListaBeneficiarios from './componentes/Perfiles/beneficiarios/VistaListaBeneficiarios'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
