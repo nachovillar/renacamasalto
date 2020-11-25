@@ -34,11 +34,15 @@ const Actividad = ({actividad}) => {
             <li>
                 <div className="contenedor-evento">
                     <div className="nombreE">
-                        <h3>Nombre</h3><p>{actividad.nombreActividad}</p>
+                        <h3>Nombre</h3><p>{actividad.nombre}</p>
                     </div>
                     <div className="fechasEvento">
                         <div className="fechaE"><h3>Fecha de Inicio</h3><p>{actividad.fechaInicio}</p></div>
                         <div className="fechaE"><h3>Fecha de Término</h3><p>{actividad.fechaTermino}</p></div>
+                    </div>
+                    <div className="fechasEvento">
+                        <div className="fechaE"><h3>Hora de Inicio</h3><p>{actividad.horaInicio}</p></div>
+                        <div className="fechaE"><h3>Hora de Término</h3><p>{actividad.horaTermino}</p></div>
                     </div>
                     <div className="botones">
                     <Button className="botonEvent" variant = "info">Info</Button>

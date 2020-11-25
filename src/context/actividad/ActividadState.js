@@ -18,10 +18,19 @@ import { v4 as uuidv4 } from 'uuid'
 import jwt_decode from "jwt-decode"
 import clienteAxios from '../../config/axios'
 import tokenAuth from '../../config/token'
+import Evento from '../../models/Evento'
 
 const ActividadState = props => {
 
-   
+    var evento = {
+        id_evento: null,
+        nombre: '',
+        fecha_hora_inicio:'',
+        fecha_hora_termino:'',
+        descripcion: '',
+        cuota: null,
+        cupos: null
+    }
 
     const initialState = {
         listaActividades: [
@@ -49,11 +58,29 @@ const ActividadState = props => {
 
         try {
             //const user = jwt_decode(token)
-            const respuesta = await clienteAxios.get('https://api.chilo.team/api/evento/mostrar/')
+            var respuesta = await clienteAxios.get('https://api.chilo.team/api/evento/mostrar/')
             console.log(respuesta.data)
+            var listaEventos = []
+            for(let i=0;i<respuesta.data.length;i++){
+                let evento = new Evento();
+                evento.id = respuesta.data[i].id_evento
+                evento.nombre = respuesta.data[i].nombre
+                evento.descripcion = respuesta.data[i].descripcion
+                let inicio = respuesta.data[i].fecha_hora_inicio.split(" ")
+                let termino = respuesta.data[i].fecha_hora_termino.split(" ")
+                evento.fechaInicio = inicio[0]
+                evento.horaInicio = inicio[1]
+                evento.fechaTermino = termino[0]
+                evento.horaTermino = termino[1]
+                const res = evento
+                let cont = listaEventos.push(res)
+                console.log(cont)
+            }
+            
+            console.log(listaEventos)
             dispatch({
                 type: OBTENER_ACTIVIDADES,
-                payload: respuesta.data
+                payload: listaEventos
             })
         } catch (error){
             dispatch({
@@ -65,12 +92,32 @@ const ActividadState = props => {
     }
 
     const agregarActividad = actividad => {
-        actividad.id = uuidv4()
+        // const token = localStorage.getItem('jwt')
+        // if(token) {
+        //     tokenAuth(token)
+        // }
+        try {
+            evento.nombre = actividad.nombre
+            evento.fecha_hora_inicio = actividad.fechaInicio+' '+actividad.horaInicio+':00'
+            evento.fecha_hora_termino = actividad.fechaTermino+' '+actividad.horaTermino+':00'
+            evento.descripcion = actividad.descripcion
+            evento.lugar = 'Espacio Vincula'
+            const data = 'json='+JSON.stringify(evento)
+            var respuesta = clienteAxios.post('https://api.chilo.team/api/evento/crear/', data)
+            console.log(respuesta.data)
+            dispatch({
+                type: AGREGAR_ACTIVIDAD,
+                payload: actividad
+            })
+        } catch (error){
+            console.log(error)
+            dispatch({
+                type:EVENTOS_ERROR
+            })
+        }
+        
 
-        dispatch({
-            type: AGREGAR_ACTIVIDAD,
-            payload: actividad
-        })
+        
     }
 
     const mostrarError = () => {
@@ -94,10 +141,34 @@ const ActividadState = props => {
     }
 
     const editarActividad = actividad => {
-        dispatch({
-            type: ACTUALIZAR_ACTIVIDAD,
-            payload: actividad
-        })
+
+        const token = localStorage.getItem('jwt')
+
+        if(token) {
+            tokenAuth(token)
+        }
+
+        try {
+            evento.id_evento = actividad.id
+            evento.nombre = actividad.nombre
+            evento.fecha_hora_inicio = actividad.fechaInicio+' '+actividad.horaInicio+':00'
+            evento.fecha_hora_termino = actividad.fechaTermino+' '+actividad.horaTermino+':00'
+            evento.descripcion = actividad.descripcion
+            const data = 'json='+JSON.stringify(evento)
+            var respuesta = clienteAxios.post('https://api.chilo.team/api/evento/editar/'+actividad.id, data)
+            console.log(respuesta.data)
+            dispatch({
+                type: ACTUALIZAR_ACTIVIDAD,
+                payload: actividad
+            })
+        } catch (error){
+            console.log(error)
+            dispatch({
+                type:EVENTOS_ERROR
+            })
+        }
+
+        
     }
 
     const ocultarFormulario = () => {
