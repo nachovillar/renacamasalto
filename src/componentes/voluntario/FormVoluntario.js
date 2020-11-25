@@ -49,7 +49,7 @@ const FormVoluntario = () => {
     const onSubmitVoluntario = e => {
         e.preventDefault()
 
-        if(id === '' || rut === ''){
+        if(rut === ''){
             mostrarError()
             return
         }
