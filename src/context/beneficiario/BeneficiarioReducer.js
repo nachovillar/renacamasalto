@@ -3,6 +3,7 @@ import{
     OBTENER_BENEFICIARIOS,
     AGREGAR_BENEFICIARIO,
     VALIDAR_FORMULARIO_B,
+    INVALIDAR_FORMULARIO_B,
     ELIMINAR_ATRIBUTOS_BENEFICIARIO,
     BENEFICIARIO_ACTUAL,
     ACTUALIZAR_BENEFICIARIO,
@@ -36,7 +37,11 @@ export default (state, action) => {
                 ...state,
                 errorformulario: true
             }
-        
+        case INVALIDAR_FORMULARIO_B:
+            return{
+                ...state,
+                errorformulario:false
+            }
         case ELIMINAR_ATRIBUTOS_BENEFICIARIO:
             return{
                 ...state,

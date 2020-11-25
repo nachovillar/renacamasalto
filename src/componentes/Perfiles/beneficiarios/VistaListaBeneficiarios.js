@@ -3,6 +3,7 @@ import Barra from '../../layout/Barra'
 import Footer from '../../layout/Footer'
 import './VistaListaBeneficiarios.css'
 import ListadoBeneficiarios from '../../beneficiario/ListadoBeneficiarios'
+import FormBeneficiario from '../../beneficiario/FormBeneficiario'
 
 const VistaListaBeneficiarios = () => {
     return(
@@ -10,8 +11,15 @@ const VistaListaBeneficiarios = () => {
             <div>
                 <Barra/>
             </div>
-            <div>
-                <ListadoBeneficiarios/>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-sm-12 col-md-4">
+                        <FormBeneficiario/>
+                    </div>
+                    <div className="col-sm-12 col-md-8">
+                        <ListadoBeneficiarios/>
+                    </div>
+                </div>
             </div>
             <div>
                 <Footer/>

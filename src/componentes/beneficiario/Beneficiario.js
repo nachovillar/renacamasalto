@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import {Button} from 'react-bootstrap'
 import beneficiarioContext from '../../context/beneficiario/BeneficiarioContext'
 import './Beneficiario.css'
+import {Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap'
 
 const Beneficiario = ({beneficiario}) => {
 
@@ -12,18 +13,19 @@ const Beneficiario = ({beneficiario}) => {
         eliminarBeneficiario(id)
         obtenerBeneficarios()
     }
-
+    
     const seleccionarBeneficiario = beneficiario =>{
         guardarBeneficiarioActual(beneficiario)
         mostrarFormulario()
     }
+     
 
     return(
 
         <div className="beneficiario container-fluid">
             <div className="row">
                 <div className="col-sm-12 col-md-3">
-                    <h3>Nombre(s)</h3>
+                    <h3>Nombre(s)(*)</h3>
                     <p>{beneficiario.nombres}</p>
                 </div>
                 <div className="col-sm-12 col-md-3">
@@ -57,7 +59,7 @@ const Beneficiario = ({beneficiario}) => {
                 <Button 
                     className="botonEvent"
                     variant = "primary"
-                    onClick = {() => seleccionarBeneficiario(beneficiario)}
+                    onClick = {() => seleccionarBeneficiario(beneficiario,'Editar')}
                 >Editar</Button>
             </div>
         </div>

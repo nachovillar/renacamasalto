@@ -6,6 +6,7 @@ import{
     OBTENER_BENEFICIARIOS,
     AGREGAR_BENEFICIARIO,
     VALIDAR_FORMULARIO_B,
+    INVALIDAR_FORMULARIO_B,
     ELIMINAR_ATRIBUTOS_BENEFICIARIO,
     BENEFICIARIO_ACTUAL,
     ACTUALIZAR_BENEFICIARIO,
@@ -21,25 +22,25 @@ const listaBeneficiarios = [
          nombres: 'Papelucho',
          apellidos: 'Principe',
          genero : 'Masculino',
-         fechaNacimiento: '10-12-1991',
+         fechaNacimiento: '1991-10-12',
          telefono: '911111111',
          ocupacion: 'Viajero',
          activo: '1'
         },
         {id: 2,
-            nombres: 'Drake',
-            apellidos: 'Oñate',
-            genero : 'Masculino',
-            fechaNacimiento: '10-09-2015',
+            nombres: 'Lucila',
+            apellidos: 'Godoy',
+            genero : 'Femenino',
+            fechaNacimiento: '1889-04-07',
             telefono: '911111110',
-            ocupacion: 'Mascota',
-            activo: '1'
+            ocupacion: 'Escritora',
+            activo: '0'
         },
         {id: 3,
             nombres: 'Condorito',
             apellidos: 'Pepo',
             genero : 'Masculino',
-            fechaNacimiento: '06-08-1949',
+            fechaNacimiento: '1949-06-08',
             telefono: '9111111138',
             ocupacion: 'Cómico',
             activo: '1'
@@ -83,7 +84,11 @@ const listaBeneficiarios = [
             type: VALIDAR_FORMULARIO_B,
         })
     }
-
+    const ocultarError = () => {
+        dispatch({
+            type: INVALIDAR_FORMULARIO_B,
+        })
+    }
     const eliminarBeneficiario = id => {
         dispatch({
             type: ELIMINAR_ATRIBUTOS_BENEFICIARIO,
@@ -121,6 +126,7 @@ const listaBeneficiarios = [
                 obtenerBeneficiarios,
                 agregarBeneficiario,
                 mostrarError,
+                ocultarError,
                 eliminarBeneficiario,
                 guardarBeneficiarioActual,
                 editarBeneficiario,

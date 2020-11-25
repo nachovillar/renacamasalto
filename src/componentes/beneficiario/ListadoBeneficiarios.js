@@ -1,11 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Beneficiario from './Beneficiario'
 import beneficiarioContext from '../../context/beneficiario/BeneficiarioContext'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import './ListadoBeneficiarios.css'
 
-import Barra from '../../componentes/layout/Barra'
-import Footer from '../../componentes/layout/Footer'
 
 const ListadoBeneficiarios = () => {
 
