@@ -40,6 +40,10 @@ const Actividad = ({actividad}) => {
                         <div className="fechaE"><h3>Fecha de Inicio</h3><p>{actividad.fecha_hora_inicio}</p></div>
                         <div className="fechaE"><h3>Fecha de Término</h3><p>{actividad.fecha_hora_termino}</p></div>
                     </div>
+                    <div className="fechasEvento">
+                        <div className="fechaE"><h3>Hora de Inicio</h3><p>{actividad.horaInicio}</p></div>
+                        <div className="fechaE"><h3>Hora de Término</h3><p>{actividad.horaTermino}</p></div>
+                    </div>
                     <div className="botones">
                     <Button className="botonEvent" variant = "info">Info</Button>
 

@@ -57,7 +57,11 @@ const Login = (props) => {
 
         if(password !== '7071'){
             mostrarAlerta('La contraseña no es correcta', 'alerta-error')
+<<<<<<< HEAD
 			return
+=======
+            return
+>>>>>>> chilopapa
         }
 
 		// console.log(usuario)

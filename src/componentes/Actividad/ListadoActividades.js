@@ -4,6 +4,8 @@ import actividadContext from '../../context/actividad/ActividadContext'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import './ListadoActividades.css'
 
+
+
 const ListadoActividades = () => {
 
     const ActividadesContext = useContext(actividadContext)
@@ -13,7 +15,7 @@ const ListadoActividades = () => {
         obtenerActividades()
     }, [])
 
-    if(listaActividades.length === 0) return null
+    // if(listaActividades.length === 0) return null
 
     return (  
 
@@ -21,7 +23,7 @@ const ListadoActividades = () => {
             <h2 className="titEvento">Eventos</h2>
             <ul className = "listado-actividades">
                 {listaActividades.length === 0
-                    ?   (<li className = "actividad"><p>No Hay Tareas en su Calendario</p></li>)
+                    ?   (<li className = "actividad"><p>No Hay Eventos en su Calendario</p></li>)
                     :   <TransitionGroup>
                             {listaActividades.map(actividad => (
                                 <CSSTransition

@@ -2,8 +2,10 @@ import React, { Fragment, useState, useContext, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button, Form } from 'react-bootstrap'
 import './FormActividad.css'
+import Evento from '../../models/Evento'
 
 import actividadContext from '../../context/actividad/ActividadContext'
+import { VALIDAR_FORMULARIO_V } from '../../types'
 
 const FormActividad = () => {
 
@@ -12,13 +14,17 @@ const FormActividad = () => {
             mostrarFormulario, agregarActividad, mostrarError, editarActividad, ocultarFormulario } = actividadesContext
 
     
+    // const actividad = actividadSeleccionada
+    // var guardarActividad = new Evento()
 
-    const [actividad, guardarActividad] = useState({
-        nombreActividad: '',
-        fechaInicio: '',
-        fechaTermino: ''
-    })
-
+    // const [actividad, guardarActividad] = useState({
+    //     nombre: '',
+    //     fecha_hora_inicio: '',
+    //     fecha_hora_termino: '',
+    //     hora_inicio: '',
+    //     hora_termino: ''
+    // })
+    var [actividad, guardarActividad] = useState(new Evento())
 
     useEffect(() =>{
 
@@ -26,18 +32,26 @@ const FormActividad = () => {
             guardarActividad(actividadSeleccionada)
             
         }
-        else{
-            guardarActividad({
-                nombreActividad: '',
-                fechaInicio: '',
-                fechaTermino: ''
+        // else{
+        //     guardarActividad({
+        //         nombre: '',
+        // fecha_hora_inicio: '',
+        // fecha_hora_termino: '',
+        // hora_inicio: '',
+        // hora_termino: ''
 
-            })
-        }
+        //     })
+        // }
 
     }, [actividadSeleccionada])
 
-    const {nombreActividad, fechaInicio, fechaTermino} = actividad
+    // const {nombre,
+    //      fecha_hora_inicio,
+    //       fecha_hora_termino,
+    //        hora_inicio,
+    //         hora_termino} = actividad
+
+    
 
     
 
@@ -52,7 +66,7 @@ const FormActividad = () => {
     const onSubmitActividad = e => {
         e.preventDefault()
 
-        if(nombreActividad === '' || fechaInicio === '' || fechaTermino === ''){
+        if(actividad.nombre === '' || actividad.fechaInicio === '' || actividad.fechaTermino === ''){
             mostrarError()
             return
         }
@@ -67,9 +81,11 @@ const FormActividad = () => {
         }
 
         guardarActividad({
-            nombreActividad: '',
-            fechaInicio: '',
-            fechaTermino: ''
+            nombre: '',
+        fecha_hora_inicio: '',
+        fecha_hora_termino: '',
+        hora_inicio: '',
+        hora_termino: ''
         })
 
     }
@@ -91,10 +107,10 @@ const FormActividad = () => {
                                 <Form.Group>
                                     <Form.Label>Nombre Evento</Form.Label>
                                     <Form.Control 
-                                        name = "nombreActividad"
+                                        name = "nombre"
                                         type = "text" 
                                         placeholder = "Nombre del evento"
-                                        value = {nombreActividad}
+                                        value = {actividad.nombre}
                                         onChange = {onChangeActividad}       
                                     />
                                 </Form.Group>
@@ -107,7 +123,7 @@ const FormActividad = () => {
                                         name = "fechaInicio"
                                         type = "date" 
                                         placeholder = "Ingrese el nombre de la actividad"
-                                        value = {fechaInicio}
+                                        value = {actividad.fechaInicio}
                                         onChange = {onChangeActividad}       
                                     />
                                 </Form.Group>
@@ -120,7 +136,47 @@ const FormActividad = () => {
                                         name = "fechaTermino"
                                         type = "date" 
                                         placeholder = "Ingrese el nombre de la actividad"
-                                        value = {fechaTermino}
+                                        value = {actividad.fechaTermino}
+                                        onChange = {onChangeActividad}       
+                                    />
+                                </Form.Group>
+                            </div>
+
+                            <div className = "inputbox">
+                                <Form.Group controlId="dob">
+                                    <Form.Label>Hora de Inicio</Form.Label>
+                                    <Form.Control 
+                                        name = "horaInicio"
+                                        type = "time" 
+                                        placeholder = "Ingrese el nombre de la actividad"
+                                        value = {actividad.horaInicio}
+                                        onChange = {onChangeActividad}       
+                                    />
+                                </Form.Group>
+                            </div>
+            
+                            <div className = "inputbox">
+                                <Form.Group controlId="dob">
+                                    <Form.Label>Hora de Término</Form.Label>
+                                    <Form.Control 
+                                        name = "horaTermino"
+                                        type = "time" 
+                                        placeholder = "Ingrese el nombre de la actividad"
+                                        value = {actividad.horaTermino}
+                                        onChange = {onChangeActividad}       
+                                    />
+                                </Form.Group>
+                            </div>
+
+                            <div className = "inputbox">
+                                <Form.Group>
+                                    <Form.Label>Descripcion</Form.Label>
+                                    <Form.Control 
+                                        name = "descripcion"
+                                        as = "textarea"
+                                        rows = "3" 
+                                        placeholder = "Nombre del evento"
+                                        value = {actividad.descripcion}
                                         onChange = {onChangeActividad}       
                                     />
                                 </Form.Group>
