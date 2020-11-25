@@ -22,7 +22,7 @@ const Login = (props) => {
         if(autenticado){
             props.history.push("/perfil-admin")
         }
-
+        
         if(mensaje) {
             mostrarAlerta(mensaje.msg, mensaje.categoria)
         }
