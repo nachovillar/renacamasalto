@@ -8,30 +8,18 @@ import { FORMULARIO_ACTIVIDAD,
          ELIMINAR_ACTIVIDAD,
          ACTIVIDAD_ACTUAL,
          ACTUALIZAR_ACTIVIDAD,
-         OCULTAR_FORMULARIO
+         OCULTAR_FORMULARIO,
+         EVENTOS_ERROR
         } from '../../types'
 
 import { v4 as uuidv4 } from 'uuid'
+import jwt_decode from "jwt-decode"
+import clienteAxios from '../../config/axios'
+import tokenAuth from '../../config/token'
 
 const ActividadState = props => {
 
-const listaActividades = [
-        {id: 1,
-         nombreActividad: 'La weaita de actividad',
-         fechaInicio: '10-12-2020',
-         fechaTermino : '23-12-2020',
-        },
-        {id: 2,
-         nombreActividad: 'La tonterita de actividad',
-         fechaInicio: '10-12-2020',
-         fechaTermino : '23-12-2020'
-        },
-        {id: 3,
-         nombreActividad: 'La basurita de actividad',
-         fechaInicio: '10-12-2020',
-         fechaTermino : '23-12-2020'
-       }
-]
+   
 
     const initialState = {
         listaActividades: [
@@ -49,11 +37,29 @@ const listaActividades = [
         })
     }
 
-    const obtenerActividades = () => {
-        dispatch({
-            type: OBTENER_ACTIVIDADES,
-            payload: listaActividades
-        })
+    const obtenerActividades = async () => {
+
+        const token = localStorage.getItem('jwt')
+
+        if(token) {
+            tokenAuth(token)
+        }
+
+        try {
+            //const user = jwt_decode(token)
+            const respuesta = await clienteAxios.get('https://api.chilo.team/api/evento/mostrar/')
+            console.log(respuesta.data)
+            dispatch({
+                type: OBTENER_ACTIVIDADES,
+                payload: respuesta.data
+            })
+        } catch (error){
+            dispatch({
+                type:EVENTOS_ERROR
+            })
+        }
+
+        
     }
 
     const agregarActividad = actividad => {
