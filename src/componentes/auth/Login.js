@@ -22,7 +22,7 @@ const Login = (props) => {
         if(autenticado){
             props.history.push("/perfil-admin")
         }
-
+        
         if(mensaje) {
             mostrarAlerta(mensaje.msg, mensaje.categoria)
         }
@@ -55,15 +55,13 @@ const Login = (props) => {
             return
         }
 
+        if(password !== 'contraseña'){
+            mostrarAlerta('La contraseña no es correcta', 'alerta-error')
+        }
+
 		// console.log(usuario)
 		let json = 'json=' + JSON.stringify(usuario)
-		// axios.post('https://api.chilo.team/api/login',json)
-		// 	.then(response => {
-		// 		console.log(response)
-		// 	}).catch(error => {
-		// 		console.log(error)
-        //     })
-        console.log(json)
+		
         iniciarSesion(json)
 	}
     return ( 
