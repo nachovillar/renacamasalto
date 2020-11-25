@@ -1,23 +1,37 @@
 import { useReducer } from 'react'
 import BarraReducer from './BarraReducer'
 import barraContext from './BarraContext'
-import { MOSTRAR_PROGRAMAS
-    
+import { MOSTRAR_INICIO,
+         MOSTRAR_PROGRAMAS,
+         MOSTRAR_EVENTOS
 } from '../../types'
 
 
 const BarraState = (props) => {
     
     const initialState = {
-        evento: false,
+        inicio: true,
+        eventos: false,
         programas: false
     }
 
     const [state, dispatch] = useReducer(BarraReducer, initialState)
     
+    const mostrarInicio = () => {
+        dispatch({
+            type: MOSTRAR_INICIO
+        })
+    }
+
     const mostrarProgramas = () => {
         dispatch({
             type: MOSTRAR_PROGRAMAS
+        })
+    }
+
+    const mostrarEventos = () => {
+        dispatch({
+            type: MOSTRAR_EVENTOS
         })
     }
 
@@ -25,9 +39,12 @@ const BarraState = (props) => {
 
         <barraContext.Provider
             value = {{
-                evento: state.evento,
+                inicio: state.inicio,
+                eventos: state.eventos,
                 programas: state.programas,
-                mostrarProgramas
+                mostrarProgramas,
+                mostrarEventos,
+                mostrarInicio
             }}
         >
             
@@ -39,4 +56,4 @@ const BarraState = (props) => {
 
 }
 
-export default BarraReducer
+export default BarraState

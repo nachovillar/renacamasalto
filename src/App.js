@@ -14,6 +14,7 @@ import BeneficiarioState from './context/beneficiario/BeneficiarioState'
 import VistaCrearVoluntario from './componentes/Perfiles/voluntario/VistaCrearVoluntario'
 import AlertaState from './context/alerta/AlertaState'
 import AuthState from './context/auth/AuthState'
+import BarraState from './context/barra/BarraState'
 
 function App() {
 
@@ -24,16 +25,18 @@ function App() {
     <ActividadState>
       <AlertaState>
         <AuthState>
-          <Router>
-          <Switch>
-            <Route exact path = "/" component = {Login}    />
-            <Route exact path = "/olvide-contrasena" component = {OlvideContrasena} />
-            <Route exact path = "/perfil-admin" component = {PerfilAdministrador} />
-            <Route exact path = "/pefil-voluntario" component = {PerfilVoluntario} />
-            <Route exact path = "/lista-beneficiarios" component = {VistaListaBeneficiarios} />
-            <Route exact path = "/crear-voluntario" component = {VistaCrearVoluntario} />
-          </Switch>
-          </Router>
+          <BarraState>
+            <Router>
+            <Switch>
+              <Route exact path = "/" component = {Login}    />
+              <Route exact path = "/olvide-contrasena" component = {OlvideContrasena} />
+              <Route exact path = "/perfil-admin" component = {PerfilAdministrador} />
+              <Route exact path = "/pefil-voluntario" component = {PerfilVoluntario} />
+              <Route exact path = "/lista-beneficiarios" component = {VistaListaBeneficiarios} />
+              <Route exact path = "/crear-voluntario" component = {VistaCrearVoluntario} />
+            </Switch>
+            </Router>
+          </BarraState>
         </AuthState>
       </AlertaState>
     </ActividadState>

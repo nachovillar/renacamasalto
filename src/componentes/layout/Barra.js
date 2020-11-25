@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Barra.css'
 import logo from '../../imagenes/logo.png';
 import img_perfil from '../../imagenes/perfil.jpg';
 import  {Navbar,Nav, NavDropdown} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
+import barraContext from '../../context/barra/BarraContext'
+
+
 const Barra = () => {
+
+    const barrasContext = useContext(barraContext)
+    const { mostrarProgramas, mostrarEventos, mostrarInicio } = barrasContext
+
+    const onClickInicio = () => {
+        mostrarInicio()
+
+    }
+
+    const onClickProgramas = () =>{
+        mostrarProgramas()
+    }
+
+    const onClickEventos = () => {
+        mostrarEventos()
+
+    }
+
+
     return ( 
         
         <div className="container-fluid contenedorBarra">
@@ -14,17 +36,16 @@ const Barra = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mx-auto text-center barraMenu">
-                        <Nav.Link className="menu" href="#">Inicio</Nav.Link>
-                        <NavDropdown className="menu" title="Programas" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#">Nueva Sesión</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#">Opcion2</NavDropdown.Item>
-                       </NavDropdown>
-                        <NavDropdown className="menu" title="Eventos" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#">Crear Evento</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#">Lista de Eventos</NavDropdown.Item>                           
-                        </NavDropdown>
+                        <Nav.Link className="menu" onClick = {() => onClickInicio()} >Inicio</Nav.Link>
+                        <Nav.Link className="menu"  title="Programas" id="collasible-nav-dropdown" onClick = {() => onClickProgramas()}>
+                            Programas
+                       </Nav.Link>
+
+                        <Nav.Link className="menu" title="Eventos" id="collasible-nav-dropdown" onClick = {() => onClickEventos()}>
+                            
+                            Eventos 
+                                                   
+                        </Nav.Link>
                         <NavDropdown className="menu" title="Voluntarios" id="collasible-nav-dropdown">
                             <NavDropdown.Item><Link to="/crear-voluntario" className="enlace-crear-voluntario">Crear cuenta</Link></NavDropdown.Item>
                             <NavDropdown.Divider />
