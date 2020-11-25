@@ -6,13 +6,14 @@ import { OBTENER_USUARIO,
 } from '../../types'
 import authContext from './AuthContext'
 import AuthReducer from './AuthReducer'
+import jwt_decode from "jwt-decode"
 
 import clienteAxios from '../../config/axios'
 import tokenAuth from '../../config/token'
 
 const AuthState = props => {
     const initialState = {
-        token: localStorage.getItem('token'),
+        token: localStorage.getItem('jwt'),
         autenticado: null,
         usuario: null,
         mensaje: null
@@ -21,14 +22,15 @@ const AuthState = props => {
     const [state, dispatch] = useReducer(AuthReducer, initialState)
 
     const usuarioAutenticado = async () => {
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem('jwt')
 
         if(token) {
             tokenAuth(token)
         }
 
         try {
-            const respuesta = await clienteAxios.get('https://api.chilo.team/api/login')
+            const user = jwt_decode(token)
+            const respuesta = await clienteAxios.get('https://api.chilo.team/api/user/mostrar/'+user.sub)
             console.log(respuesta)
             dispatch({
                 type: OBTENER_USUARIO,
@@ -50,7 +52,7 @@ const AuthState = props => {
                 type: LOGIN_EXITOSO,
                 payload: respuesta.data
             })
-             
+            localStorage.setItem('jwt',respuesta.data.signup)
             usuarioAutenticado()
 
         } catch (error) {

@@ -55,7 +55,7 @@ const Login = (props) => {
             return
         }
 
-        if(password !== '7071'){
+        if(password !== 'contraseña'){
             mostrarAlerta('La contraseña no es correcta', 'alerta-error')
         }
 
