@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import {Button} from 'react-bootstrap'
 import beneficiarioContext from '../../context/beneficiario/BeneficiarioContext'
 import './Beneficiario.css'
-import {Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap'
 
 const Beneficiario = ({beneficiario}) => {
 
