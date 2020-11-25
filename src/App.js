@@ -10,6 +10,7 @@ import PerfilAdministrador from './componentes/Perfiles/administrador/PerfilAdmi
 import PerfilVoluntario from './componentes/Perfiles/voluntario/PerfilVoluntario'
 
 import ActividadState from './context/actividad/ActividadState'
+import ProgramaState from './context/programa/ProgramaState'
 import BeneficiarioState from './context/beneficiario/BeneficiarioState'
 import VistaCrearVoluntario from './componentes/Perfiles/voluntario/VistaCrearVoluntario'
 import AlertaState from './context/alerta/AlertaState'
@@ -23,22 +24,24 @@ function App() {
   return (
     <BeneficiarioState>
     <ActividadState>
-      <AlertaState>
-        <AuthState>
-          <BarraState>
-            <Router>
-            <Switch>
-              <Route exact path = "/" component = {Login}    />
-              <Route exact path = "/olvide-contrasena" component = {OlvideContrasena} />
-              <Route exact path = "/perfil-admin" component = {PerfilAdministrador} />
-              <Route exact path = "/pefil-voluntario" component = {PerfilVoluntario} />
-              <Route exact path = "/lista-beneficiarios" component = {VistaListaBeneficiarios} />
-              <Route exact path = "/crear-voluntario" component = {VistaCrearVoluntario} />
-            </Switch>
-            </Router>
-          </BarraState>
-        </AuthState>
-      </AlertaState>
+      <ProgramaState>
+        <AlertaState>
+          <AuthState>
+            <BarraState>
+              <Router>
+              <Switch>
+                <Route exact path = "/" component = {Login}    />
+                <Route exact path = "/olvide-contrasena" component = {OlvideContrasena} />
+                <Route exact path = "/perfil-admin" component = {PerfilAdministrador} />
+                <Route exact path = "/pefil-voluntario" component = {PerfilVoluntario} />
+                <Route exact path = "/lista-beneficiarios" component = {VistaListaBeneficiarios} />
+                <Route exact path = "/crear-voluntario" component = {VistaCrearVoluntario} />
+              </Switch>
+              </Router>
+            </BarraState>
+          </AuthState>
+        </AlertaState>
+        </ProgramaState>
     </ActividadState>
     </BeneficiarioState>
   );

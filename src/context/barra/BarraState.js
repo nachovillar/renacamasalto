@@ -13,6 +13,7 @@ const BarraState = (props) => {
     
     const initialState = {
         inicio: true,
+        programas: false,
         eventos: false,
         programas: false,
         voluntarios: false,
@@ -55,6 +56,7 @@ const BarraState = (props) => {
         <barraContext.Provider
             value = {{
                 inicio: state.inicio,
+                programas: state.programas,
                 eventos: state.eventos,
                 programas: state.programas,
                 voluntarios: state.voluntarios,

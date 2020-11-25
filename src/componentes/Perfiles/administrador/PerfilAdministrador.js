@@ -10,6 +10,7 @@ import barraState from '../../../context/barra/BarraContext'
 import Inicio from '../../inicio/Inicio'
 import VistaCrearVoluntario from '../../Perfiles/voluntario/VistaCrearVoluntario'
 import VistaListaBeneficiarios from '../beneficiarios/VistaListaBeneficiarios'
+import ListadoProgramas from '../../programa/ListadoProgramas'
 
 const PerfilAdministrador = (login) => {
     
@@ -40,9 +41,21 @@ const PerfilAdministrador = (login) => {
                     }
 
                     { programas ?
-                        <p>HOLAAA</p>  
-                        : null  
+                        <div className = "programas">
+                            <aside className = "sidebar col-sm-12 col-md-4">
+                                
+                                    <Sidebar/>
+                                
+                            </aside>
+
+                            <div className = "contenedor-actividades">
+                                <ListadoProgramas/>
+                            </div>
+                        </div>
+                        : null
                     }
+
+                    
                     { voluntarios ? 
                         <VistaCrearVoluntario></VistaCrearVoluntario>
                         
