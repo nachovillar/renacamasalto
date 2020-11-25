@@ -1,5 +1,5 @@
 import {FORMULARIO_PROGRAMA,
-    OBTENER_PROGRAMAS,
+    /*OBTENER_PROGRAMAS,*/
     AGREGAR_PROGRAMA,
     VALIDAR_FORMULARIO,
     ELIMINAR_PROGRAMA,
@@ -18,11 +18,11 @@ switch(action.type) {
             formulario: true
         }
 
-    case OBTENER_PROGRAMAS:
-        return {
-            ...state,
-            listaProgramas: action.payload
-        }
+    // case OBTENER_PROGRAMAS:
+    //     return {
+    //         ...state,
+    //         listaProgramas: action.payload
+    //     }
     
     case AGREGAR_PROGRAMA:
         return {

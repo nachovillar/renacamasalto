@@ -13,7 +13,7 @@ import VistaListaBeneficiarios from '../beneficiarios/VistaListaBeneficiarios'
 import ListadoProgramas from '../../programa/ListadoProgramas'
 import VistaEventos from '../../Perfiles/eventos/VistaEventos'
 
-const PerfilAdministrador = (login) => {
+const PerfilAdministrador = () => {
     
     const barrasContext = useContext(barraState)
     const { eventos, programas, voluntarios, beneficiarios,inicio  } = barrasContext
@@ -40,7 +40,7 @@ const PerfilAdministrador = (login) => {
                             </aside>
 
                             <div className = "contenedor-actividades">
-                                <ListadoProgramas/>
+                                <ListadoProgramas></ListadoProgramas>
                             </div>
                         </div>
                         : null

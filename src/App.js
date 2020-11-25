@@ -33,15 +33,12 @@ function App() {
                 <Route exact path = "/" component = {Login}    />
                 <Route exact path = "/olvide-contrasena" component = {OlvideContrasena} />
                 <Route exact path = "/perfil-admin" component = {PerfilAdministrador} />
-                <Route exact path = "/pefil-voluntario" component = {PerfilVoluntario} />
-                <Route exact path = "/lista-beneficiarios" component = {VistaListaBeneficiarios} />
-                <Route exact path = "/crear-voluntario" component = {VistaCrearVoluntario} />
               </Switch>
               </Router>
             </BarraState>
           </AuthState>
         </AlertaState>
-        </ProgramaState>
+      </ProgramaState>
     </ActividadState>
     </BeneficiarioState>
   );

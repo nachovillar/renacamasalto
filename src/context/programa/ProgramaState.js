@@ -11,9 +11,9 @@ import { FORMULARIO_PROGRAMA,
         } from '../../types'
 
 import { v4 as uuidv4 } from 'uuid'
-import jwt_decode from "jwt-decode"
-import clienteAxios from '../../config/axios'
-import tokenAuth from '../../config/token'
+// import jwt_decode from "jwt-decode"
+// import clienteAxios from '../../config/axios'
+// import tokenAuth from '../../config/token'
 
 const ProgramaState = props => {
 

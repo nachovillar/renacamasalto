@@ -25,11 +25,11 @@ const Programa = ({programa}) => {
             <li>
                 <div className="contenedor-evento">
                     <div className="nombreE">
-                        <h3>Nombre</h3><p>{programa.nombre}</p>
+                        <h3>Nombre</h3><p>{programa.nombrePrograma}</p>
                     </div>
                     <div className="fechasEvento">
-                        <div className="fechaE"><h3>Fecha de Inicio</h3><p>{programa.fecha_hora_inicio}</p></div>
-                        <div className="fechaE"><h3>Fecha de Término</h3><p>{programa.fecha_hora_termino}</p></div>
+                        <div className="fechaE"><h3>Fecha de Inicio</h3><p>{programa.fechaInicio}</p></div>
+                        <div className="fechaE"><h3>Fecha de Término</h3><p>{programa.fechaTermino}</p></div>
                     </div>
                     <div className="botones">
                     <Button className="botonEvent" variant = "info">Info</Button>
