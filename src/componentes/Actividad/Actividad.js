@@ -19,6 +19,16 @@ const Actividad = ({actividad}) => {
         mostrarFormulario()
     }
 
+    const postularActividad = id =>{
+        postularActividad(id)
+        mostrarFormulario()
+    }
+
+    const retirarActividad = id =>{
+        retirarActividad(id)
+        mostrarFormulario()
+    }
+
     return (  
         <div>
             <li>
@@ -44,6 +54,16 @@ const Actividad = ({actividad}) => {
                         variant = "danger"
                         onClick = {() => deleteActividad(actividad.id)}
                     >Eliminar</Button>
+
+                    <Button
+                        className="botonEvent postular"
+                        onClick = {() => postularActividad(actividad.id)}
+                    >Inscribir a evento</Button>
+                    <Button
+                        className="botonEvent"
+                        variant = "warning"
+                        onClick = {() => retirarActividad(actividad.id)}
+                    >Desinscribir</Button>
                     </div>
                 </div>
             </li>

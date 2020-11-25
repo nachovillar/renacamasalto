@@ -5,7 +5,9 @@ import {FORMULARIO_ACTIVIDAD,
         ELIMINAR_ACTIVIDAD,
         ACTIVIDAD_ACTUAL,
         ACTUALIZAR_ACTIVIDAD,
-        OCULTAR_FORMULARIO
+        OCULTAR_FORMULARIO,
+        POSTULAR_ACTIVIDAD,
+        RETIRAR_ACTIVIDAD
         } from '../../types'
 
 export default (state, action) => {
@@ -59,6 +61,18 @@ export default (state, action) => {
             return {
                 ...state,
                 formulario: false
+            }
+        
+        case POSTULAR_ACTIVIDAD: 
+            return{
+                ...state,
+                actividadSeleccionada: action.payload //Dejare esa funcion por ahora en ambos, para rellenar lineas
+            }
+        
+        case RETIRAR_ACTIVIDAD: 
+            return{
+                ...state,
+                actividadSeleccionada: action.payload
             }
 
         default: 

@@ -8,7 +8,9 @@ import { FORMULARIO_ACTIVIDAD,
          ELIMINAR_ACTIVIDAD,
          ACTIVIDAD_ACTUAL,
          ACTUALIZAR_ACTIVIDAD,
-         OCULTAR_FORMULARIO
+         OCULTAR_FORMULARIO,
+         POSTULAR_ACTIVIDAD,
+         RETIRAR_ACTIVIDAD
         } from '../../types'
 
 import { v4 as uuidv4 } from 'uuid'
@@ -94,9 +96,24 @@ const listaActividades = [
 
     const ocultarFormulario = () => {
         dispatch({
-            type: OCULTAR_FORMULARIO
+            type: OCULTAR_FORMULARIO,
         })
     }
+
+    const postularActividad = id => {
+        dispatch({
+            type: POSTULAR_ACTIVIDAD,   
+            payload: id
+        })
+    }
+
+    const retirarActividad = id => {
+        dispatch({
+            type: RETIRAR_ACTIVIDAD,   
+            payload: id
+        })
+    }
+    
     return(
         <actividadContext.Provider
             value = {{
@@ -111,7 +128,9 @@ const listaActividades = [
                 eliminarActividad,
                 guardarActividadActual,
                 editarActividad,
-                ocultarFormulario
+                ocultarFormulario,
+                postularActividad,
+                retirarActividad
                 
             }}
         >
