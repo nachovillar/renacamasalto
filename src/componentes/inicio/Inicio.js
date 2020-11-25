@@ -1,10 +1,11 @@
 import React from 'react'
 import construccion from '../../imagenes/construccion.png'
+import './inicio.css'
 
 const Inicio = () => {
     return(
 
-        <img src={construccion}></img>
+        <img className="imgConst" src={construccion}></img>
 
     )
 }

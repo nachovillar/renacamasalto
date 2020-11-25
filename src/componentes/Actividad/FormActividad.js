@@ -132,7 +132,7 @@ const FormActividad = () => {
                                         type = "submit"
                                         className = "button-primary"
 
-                    >{ actividadSeleccionada ? 'Editar' : 'Agregar' }</Button>
+                            >{ actividadSeleccionada ? 'Editar' : 'Agregar' }</Button>
                             
                             </div>
             

@@ -1,15 +1,24 @@
 import React from 'react'
-import {Button} from 'react-bootstrap'
+import FormVoluntario from '../../voluntario/FormVoluntario';
+import ListadoVoluntarios from '../../voluntario/ListadoVoluntarios';
 import './VistaCrearVoluntario.css'
-import Barra from '../../layout/Barra'
-import construccion from '../../../imagenes/construccion.png'
-import Footer from '../../layout/Footer'
+
+
 
 const VistaCrearVoluntario = () => {
 
     return(
-        <div>
-            <img src={construccion} className="imgConst"></img>
+        <div className="vista-lista-voluntarios">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-sm-12 col-md-4">
+                        <FormVoluntario/>
+                    </div>
+                    <div className="col-sm-12 col-md-8">
+                        <ListadoVoluntarios/>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

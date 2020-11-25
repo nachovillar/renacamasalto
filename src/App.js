@@ -2,20 +2,18 @@ import './App.css'
 import React from 'react'
 import Login from './componentes/auth/Login'
 import OlvideContrasena from './componentes/confirmarContraseña/OlvideContrasena'
-import VistaListaBeneficiarios from './componentes/Perfiles/beneficiarios/VistaListaBeneficiarios'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PerfilAdministrador from './componentes/Perfiles/administrador/PerfilAdministrador'
-import PerfilVoluntario from './componentes/Perfiles/voluntario/PerfilVoluntario'
 
 import ActividadState from './context/actividad/ActividadState'
 import ProgramaState from './context/programa/ProgramaState'
 import BeneficiarioState from './context/beneficiario/BeneficiarioState'
-import VistaCrearVoluntario from './componentes/Perfiles/voluntario/VistaCrearVoluntario'
 import AlertaState from './context/alerta/AlertaState'
 import AuthState from './context/auth/AuthState'
 import BarraState from './context/barra/BarraState'
+import VoluntarioState from './context/voluntario/VoluntarioState'
 
 function App() {
 
@@ -24,6 +22,7 @@ function App() {
   return (
     <BeneficiarioState>
     <ActividadState>
+      <VoluntarioState>
       <ProgramaState>
         <AlertaState>
           <AuthState>
@@ -39,6 +38,7 @@ function App() {
           </AuthState>
         </AlertaState>
       </ProgramaState>
+      </VoluntarioState>
     </ActividadState>
     </BeneficiarioState>
   );
