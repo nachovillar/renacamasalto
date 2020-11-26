@@ -3,6 +3,7 @@ import Voluntario from './Voluntario'
 import voluntarioContext from '../../context/voluntario/VoluntarioContext'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import './ListadoVoluntarios.css'
+import userAuth from '../auth/UserAuth'
 
 
 const ListadoVoluntarios = () => {
@@ -12,6 +13,7 @@ const ListadoVoluntarios = () => {
 
     useEffect(() => {
         obtenerVoluntarios()
+        console.log(userAuth.isDirectivo())
     }, [])
 
     if(listaVoluntarios.length === 0) return null
@@ -21,7 +23,7 @@ const ListadoVoluntarios = () => {
         <div className="listadoVoluntarios container">
             <h2 className="titBeneficiarios">Voluntarios Creados</h2>
             <ul className = "listado-voluntarios">
-                {listaVoluntarios.length === 0
+                {userAuth.isDirectivo() === false
                     ?   (<li className = "voluntario"><p>No Hay Voluntarios Inscritos</p></li>)
                     :   <TransitionGroup>
                             {listaVoluntarios.map(voluntario => (

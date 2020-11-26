@@ -14,11 +14,10 @@ import AlertaState from './context/alerta/AlertaState'
 import AuthState from './context/auth/AuthState'
 import BarraState from './context/barra/BarraState'
 import VoluntarioState from './context/voluntario/VoluntarioState'
+import {ProtectedRoute} from './componentes/auth/protected.route'
+import {AuthRoute} from './componentes/auth/auth.route'
 
 function App() {
-
- 
-   
   return (
     <BeneficiarioState>
     <ActividadState>
@@ -29,9 +28,9 @@ function App() {
             <BarraState>
               <Router>
               <Switch>
-                <Route exact path = "/" component = {Login}    />
+                <AuthRoute exact path = "/" component = {Login} />
                 <Route exact path = "/olvide-contrasena" component = {OlvideContrasena} />
-                <Route exact path = "/perfil-admin" component = {PerfilAdministrador} />
+                <ProtectedRoute exact path = "/perfil-admin" component = {PerfilAdministrador} />
               </Switch>
               </Router>
             </BarraState>

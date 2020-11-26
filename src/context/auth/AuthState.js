@@ -7,9 +7,11 @@ import { OBTENER_USUARIO,
 import authContext from './AuthContext'
 import AuthReducer from './AuthReducer'
 import jwt_decode from "jwt-decode"
+import userAuth from '../../componentes/auth/UserAuth'
 
 import clienteAxios from '../../config/axios'
 import tokenAuth from '../../config/token'
+import { ResponsiveEmbed } from 'react-bootstrap'
 
 const AuthState = props => {
     const initialState = {
@@ -26,6 +28,7 @@ const AuthState = props => {
 
         if(token) {
             tokenAuth(token)
+            userAuth.login()
         }
 
         try {
@@ -46,19 +49,36 @@ const AuthState = props => {
     const iniciarSesion = async datos => {
  
         try{
-            const respuesta = await clienteAxios.post('https://api.chilo.team/api/login', datos)
-          
-            dispatch({
-                type: LOGIN_EXITOSO,
-                payload: respuesta.data
+            // const respuesta = await 
+            clienteAxios.post('https://api.chilo.team/api/login', datos)
+            .then(response => {
+                dispatch({
+                    type: LOGIN_EXITOSO,
+                    payload: response.data
+                })
+                console.log(response)
+                localStorage.setItem('jwt',response.data.signup)
+                userAuth.login()
+                usuarioAutenticado()
+            }).catch(error => {
+                console.log(error)
+                const alerta = {
+                    msg: error.response.mensaje,
+                    categoria: 'alerta-error'
+                }
+    
+                dispatch({
+                    type: LOGIN_ERROR,
+                    payload: alerta
+                })
             })
-            localStorage.setItem('jwt',respuesta.data.signup)
-            usuarioAutenticado()
+            // console.log(respuesta)
+            
 
         } catch (error) {
             
             const alerta = {
-                msg: error.response.mensaje,
+                msg: error.mensaje,
                 categoria: 'alerta-error'
             }
 

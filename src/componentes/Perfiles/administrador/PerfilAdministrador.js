@@ -15,7 +15,7 @@ import VistaEventos from '../../Perfiles/eventos/VistaEventos'
 import FormPrograma from '../../programa/FormPrograma'
 import VistaProgramas from '../programas/VistaProgramas'
 
-const PerfilAdministrador = () => {
+const PerfilAdministrador = (props) => {
     
     const barrasContext = useContext(barraState)
     const { eventos, programas, voluntarios, beneficiarios,inicio  } = barrasContext
