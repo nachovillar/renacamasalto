@@ -13,7 +13,7 @@ import VistaListaBeneficiarios from '../beneficiarios/VistaListaBeneficiarios'
 import ListadoProgramas from '../../programa/ListadoProgramas'
 import VistaEventos from '../../Perfiles/eventos/VistaEventos'
 
-const PerfilAdministrador = () => {
+const PerfilAdministrador = (props) => {
     
     const barrasContext = useContext(barraState)
     const { eventos, programas, voluntarios, beneficiarios,inicio  } = barrasContext
