@@ -14,8 +14,7 @@ const FormVoluntario = () => {
     
 
     const [voluntario, guardarVoluntario] = useState({
-        id:'',
-        rut:'',
+        id_rut:'',
     })
 
 
@@ -27,14 +26,13 @@ const FormVoluntario = () => {
         }
         else{
             guardarVoluntario({
-                id:'',
-                rut:'',
+                id_rut:'',
             })
         }
 
     }, [voluntarioSeleccionada])
 
-    const {id, rut} = voluntario
+    const {id_rut} = voluntario
 
     
 
@@ -49,7 +47,7 @@ const FormVoluntario = () => {
     const onSubmitVoluntario = e => {
         e.preventDefault()
 
-        if(rut === ''){
+        if(id_rut === ''){
             mostrarError()
             return
         }
@@ -57,12 +55,10 @@ const FormVoluntario = () => {
         if(voluntarioSeleccionada === null){
             agregarVoluntario(voluntario)
             ocultarFormulario()
-            
-        } 
+        }
 
         guardarVoluntario({
-            id:'',
-            rut:'',
+            id_rut:'',
         })
 
     }
@@ -84,10 +80,10 @@ const FormVoluntario = () => {
                                 <Form.Group>
                                     <Form.Label>RUT</Form.Label>
                                     <Form.Control 
-                                        name = "rut"
+                                        name = "id_rut"
                                         type = "text" 
                                         placeholder = "Ej: 12345678-9"
-                                        value = {rut}
+                                        value = {id_rut}
                                         onChange = {onChangeVoluntario}       
                                     />
                                 </Form.Group>

@@ -26,9 +26,32 @@ const Voluntario = ({voluntario}) => {
                     <h3>RUT: </h3>
                 </div>
                 <div className="col-xs-12 valorRut">
-                    <p>{voluntario.rut}</p>
+                    <p>{voluntario.id_rut}</p>
                 </div>
             </div>
+            <div className="row justify-content-center">
+                <div className="col-xs-6">
+                    <h3>Nombre: </h3>
+                </div>
+                <div className="col-xs-6 valorRut">
+                    <p>{voluntario.nombres}    </p>
+                </div>
+                <div className="col-xs-6">
+                    <h3>Apellido: </h3>
+                </div>
+                <div className="col-xs-6 valorRut">
+                    <p>{voluntario.apellidos}    </p>
+                </div>
+            </div>
+            <div className="row justify-content-center">
+                <div className="col-xs-12">
+                    <h3>Permisos: </h3>
+                </div>
+                <div className="col-xs-12 valorRut">
+                    <p>{voluntario.permisos}</p>
+                </div>
+            </div>
+            
         </div>
         
     );

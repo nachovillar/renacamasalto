@@ -26,7 +26,7 @@ const Barra = (props) => {
 
         if(!autenticado){
             console.log("cerrar sesion")
-            props.history.push('')
+            
         }
 
     }, [mensaje, autenticado, props.history])
@@ -54,7 +54,7 @@ const Barra = (props) => {
     const cerrarSesion = e =>{
         logout()
         userAuth.logout()
-        // this.props.history.push('/')
+        window.location.replace('');
     }
     return ( 
         

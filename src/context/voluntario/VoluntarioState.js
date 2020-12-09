@@ -13,32 +13,21 @@ import{
     OCULTAR_FORMULARIO_V
 } from '../../types'
 
+import clienteAxios from '../../config/axios'
+import tokenAuth from '../../config/token'
+import Voluntario from '../../models/Voluntario'
+
 import { v4 as uuidv4 } from 'uuid'
 
 const VoluntarioState = props => {
 
-const listaVoluntarios = [
-        {   id: 1,
-            rut: '18564622-0',
-        },
-        {   id: 2,
-            rut: '19777999-1',
-            
-        },
-        {   id: 3,
-            rut: '18090999-2',
-        },
-        {   id: 4,
-            rut: '16987097-0',
-        },
-        {   id: 5,
-            rut: '19000411-1',
-            
-        },
-        {   id: 6,
-            rut: '18076543-2',
-        }
-]
+    var voluntario = {
+        id_rut: ''
+    }
+
+    const listaVoluntarios = null
+
+    
 
     const initialState = {
         listaVoluntarios: [
@@ -51,25 +40,84 @@ const listaVoluntarios = [
     const [state, dispatch] = useReducer(reducer, initialState)
 
     const mostrarFormulario = () => {
+        dispatch({
+            type: FORMULARIO_VOLUNTARIO
+        })
+    }
+
+    const obtenerVoluntarios = async () => {
+        const token = localStorage.getItem('jwt')
+
+        if(token) {
+            tokenAuth(token)
+        }
+
+        try {
+            //const user = jwt_decode(token)
+            var respuesta = await clienteAxios.post('https://api.chilo.team/api/user/mostrar/')
+            console.log(respuesta.data.data)
+            var listaVoluntarios = []
+            for(let i=0;i<respuesta.data.data.length;i++){
+                let voluntario = new Voluntario();
+                voluntario.id_rut = respuesta.data.data[i].id_rut
+                voluntario.nombres = respuesta.data.data[i].nombres
+                voluntario.apellidos = respuesta.data.data[i].apellidos
+                voluntario.permisos = respuesta.data.data[i].permisos
+                const res = voluntario
+                let cont = listaVoluntarios.push(res)
+                console.log(cont)
+            }
+            
+            console.log(listaVoluntarios)
             dispatch({
-                type: FORMULARIO_VOLUNTARIO
-        })
+                type: OBTENER_VOLUNTARIOS,
+                payload: listaVoluntarios
+            })
+        } catch (error){
+            dispatch({
+                type: null
+            })
+        }
     }
 
-    const obtenerVoluntarios = () => {
-        dispatch({
-            type: OBTENER_VOLUNTARIOS,
-            payload: listaVoluntarios
-        })
-    }
+    const agregarVoluntario = vol => {
+        const token = localStorage.getItem('jwt')
 
-    const agregarVoluntario = voluntario => {
-        voluntario.id = uuidv4()
+        if(token) {
+            tokenAuth(token)
+        }
 
-        dispatch({
-            type: AGREGAR_VOLUNTARIO,
-            payload: voluntario
-        })
+        try {
+            //const user = jwt_decode(token)
+            const data = 'json='+JSON.stringify(vol)
+            console.log(data)      
+
+            clienteAxios.post('https://api.chilo.team/api/register', data)
+            .then(response => {
+                dispatch({
+                    type: AGREGAR_VOLUNTARIO,
+                    payload: voluntario
+                })
+                console.log(response)
+                console.log("ingreso")
+
+            }).catch(error => {
+                console.log(error)
+                const alerta = {
+                    msg: error.response.mensaje,
+                    categoria: 'alerta-error'
+                }
+    
+                dispatch({
+                    type: null,
+                    payload: alerta
+                })
+            })
+        } catch (error){
+            dispatch({
+                type: null
+            })
+        }
     }
 
     const mostrarError = () => {
