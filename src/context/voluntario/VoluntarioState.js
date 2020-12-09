@@ -100,6 +100,7 @@ const VoluntarioState = props => {
                 })
                 console.log(response)
                 console.log("ingreso")
+                window.location.replace('');
 
             }).catch(error => {
                 console.log(error)

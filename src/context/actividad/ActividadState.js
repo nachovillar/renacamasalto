@@ -14,8 +14,6 @@ import { FORMULARIO_ACTIVIDAD,
          EVENTOS_ERROR
         } from '../../types'
 
-import { v4 as uuidv4 } from 'uuid'
-import jwt_decode from "jwt-decode"
 import clienteAxios from '../../config/axios'
 import tokenAuth from '../../config/token'
 import Evento from '../../models/Evento'
@@ -73,8 +71,7 @@ const ActividadState = props => {
                 evento.fechaTermino = termino[0]
                 evento.horaTermino = termino[1]
                 const res = evento
-                let cont = listaEventos.push(res)
-                console.log(cont)
+                listaEventos.push(res)
             }
             
             console.log(listaEventos)
@@ -127,10 +124,34 @@ const ActividadState = props => {
     }
 
     const eliminarActividad = id => {
-        dispatch({
-            type: ELIMINAR_ACTIVIDAD,
-            payload: id
+        const token = localStorage.getItem('jwt')
+
+        if(token) {
+            tokenAuth(token)
+        }
+        evento.id_evento = id
+        const data = 'json='+JSON.stringify(evento)
+        clienteAxios.post('https://api.chilo.team/api/evento/eliminar',data)
+        .then(response => {
+            dispatch({
+                type: ELIMINAR_ACTIVIDAD,
+                payload: id
+            })
+            console.log(response)
+            console.log("evento eliminado con exito")
+        }).catch(error => {
+            console.log(error)
+            const alerta = {
+                msg: error.response.data.mensaje,
+                categoria: 'alerta-error'
+            }
+
+            dispatch({
+                type: EVENTOS_ERROR,
+                payload: alerta
+            })
         })
+        
     }
 
     const guardarActividadActual = actividad => {

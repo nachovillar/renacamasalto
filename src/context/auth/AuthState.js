@@ -13,7 +13,7 @@ import userAuth from '../../componentes/auth/UserAuth'
 
 import clienteAxios from '../../config/axios'
 import tokenAuth from '../../config/token'
-import { ResponsiveEmbed } from 'react-bootstrap'
+// import { ResponsiveEmbed } from 'react-bootstrap'
 
 const AuthState = props => {
     const initialState = {

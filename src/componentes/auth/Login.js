@@ -3,9 +3,8 @@ import logo from '../../imagenes/logo.png';
 import './Login.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form } from 'react-bootstrap'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Footer from '../layout/Footer'
-import axios from 'axios'
 import alertaContext from '../../context/alerta/AlertaContext'
 import authContext from '../../context/auth/AuthContext' 
 
