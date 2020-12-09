@@ -151,12 +151,13 @@ const ActividadState = props => {
         try {
             evento.id_evento = actividad.id
             evento.nombre = actividad.nombre
-            evento.fecha_hora_inicio = actividad.fechaInicio+' '+actividad.horaInicio+':00'
-            evento.fecha_hora_termino = actividad.fechaTermino+' '+actividad.horaTermino+':00'
+            evento.fecha_hora_inicio = actividad.fechaInicio+' '+actividad.horaInicio
+            evento.fecha_hora_termino = actividad.fechaTermino+' '+actividad.horaTermino
             evento.descripcion = actividad.descripcion
+            console.log(evento)
             const data = 'json='+JSON.stringify(evento)
             var respuesta = clienteAxios.post('https://api.chilo.team/api/evento/editar/'+actividad.id, data)
-            console.log(respuesta.data)
+            console.log(respuesta)
             dispatch({
                 type: ACTUALIZAR_ACTIVIDAD,
                 payload: actividad

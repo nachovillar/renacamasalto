@@ -3,7 +3,7 @@ import logo from '../../imagenes/logo.png';
 import './Login.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import Footer from '../layout/Footer'
 import axios from 'axios'
 import alertaContext from '../../context/alerta/AlertaContext'
@@ -20,7 +20,8 @@ const Login = (props) => {
     useEffect(() =>{
 
         if(autenticado){
-            props.history.push("/perfil-admin")
+            console.log("autenticado")
+            props.history.push('/perfil-admin')
         }
         
         if(mensaje) {

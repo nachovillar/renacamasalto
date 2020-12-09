@@ -2,11 +2,13 @@ import { useReducer } from 'react'
 import { OBTENER_USUARIO,
          LOGIN_ERROR,
          LOGIN_EXITOSO,
+         LOGOUT_EXITOSO,
+         LOGOUT_ERROR
          
 } from '../../types'
 import authContext from './AuthContext'
 import AuthReducer from './AuthReducer'
-import jwt_decode from "jwt-decode"
+import jwt_admin from "jsonwebtoken"
 import userAuth from '../../componentes/auth/UserAuth'
 
 import clienteAxios from '../../config/axios'
@@ -25,14 +27,14 @@ const AuthState = props => {
 
     const usuarioAutenticado = async () => {
         const token = localStorage.getItem('jwt')
-
-        if(token) {
+        console.log(token)
+        if(jwt_admin.verify(token,"Clave super secreto para jwt")) {
             tokenAuth(token)
             userAuth.login()
         }
 
         try {
-            const user = jwt_decode(token)
+            const user = jwt_admin.decode(token)
             const respuesta = await clienteAxios.get('https://api.chilo.team/api/user/mostrar/'+user.sub)
             console.log(respuesta)
             dispatch({
@@ -57,6 +59,7 @@ const AuthState = props => {
                     payload: response.data
                 })
                 console.log(response)
+                console.log("ingreso")
                 localStorage.setItem('jwt',response.data.signup)
                 userAuth.login()
                 usuarioAutenticado()
@@ -89,6 +92,29 @@ const AuthState = props => {
         }
     }
 
+    const logout = async () => {
+        try{
+            localStorage.removeItem('jwt')
+            userAuth.logout()
+            const mensaje = {
+                msg: "logout exitoso",
+            }
+            dispatch({
+                type: LOGOUT_EXITOSO,
+                payload: mensaje
+            })
+        }catch(error){
+            const alerta = {
+                msg: error.mensaje,
+                categoria: 'alerta-error'
+            }
+
+            dispatch({
+                type: LOGOUT_ERROR,
+                payload: alerta
+            })
+        }
+    }
 
     return (
         <authContext.Provider
@@ -98,7 +124,8 @@ const AuthState = props => {
                 usuario: state.usuario,
                 mensaje: state.mensaje,
                 iniciarSesion,
-                usuarioAutenticado
+                usuarioAutenticado,
+                logout
             }}
         >
             {props.children}

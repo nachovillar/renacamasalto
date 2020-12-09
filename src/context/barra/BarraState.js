@@ -15,7 +15,6 @@ const BarraState = (props) => {
         inicio: true,
         programas: false,
         eventos: false,
-        programas: false,
         voluntarios: false,
         beneficiarios: false
     }
@@ -58,7 +57,6 @@ const BarraState = (props) => {
                 inicio: state.inicio,
                 programas: state.programas,
                 eventos: state.eventos,
-                programas: state.programas,
                 voluntarios: state.voluntarios,
                 beneficiarios: state.beneficiarios,
                 mostrarProgramas,
