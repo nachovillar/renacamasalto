@@ -5,6 +5,7 @@ class UserAuth {
     constructor(){
         this.authenticated = false;
         this.permisos = '';
+        this.id_rut = '';
     }
 
     login(){
@@ -13,6 +14,7 @@ class UserAuth {
         if(valido){
             console.log('Token valido')
             this.permisos = jwt_admin.decode(token).permisos
+            this.id_rut = jwt_admin.decode(token).sub
             if(this.permisos[0] === 'v'){
                 this.authenticated = true
             }

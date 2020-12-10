@@ -8,7 +8,7 @@ import UserAuth from '../auth/UserAuth'
 const Actividad = ({actividad}) => {
 
     const actividadesContext  = useContext(actividadContext)
-    const { eliminarActividad, obtenerActividades, guardarActividadActual, mostrarFormulario } = actividadesContext
+    const { eliminarActividad, obtenerActividades, guardarActividadActual, mostrarFormulario, postularActividad } = actividadesContext
 
     const deleteActividad = id => {
         eliminarActividad(id)
@@ -20,7 +20,7 @@ const Actividad = ({actividad}) => {
         mostrarFormulario()
     }
 
-    const postularActividad = id =>{
+    const postularEvento = id =>{
         postularActividad(id)
         mostrarFormulario()
     }
@@ -66,7 +66,7 @@ const Actividad = ({actividad}) => {
 
                     <Button
                         className="botonEvent postular"
-                        onClick = {() => postularActividad(actividad.id)}
+                        onClick = {() => postularEvento(actividad.id)}
                     >Inscribir a evento</Button>
                     <Button
                         className="botonEvent"
