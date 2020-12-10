@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'react-bootstrap'
 import actividadContext from '../../context/actividad/ActividadContext'
 import './Actividad.css'
+import UserAuth from '../auth/UserAuth'
 
 const Actividad = ({actividad}) => {
 
@@ -46,18 +47,22 @@ const Actividad = ({actividad}) => {
                     </div>
                     <div className="botones">
                     <Button className="botonEvent" variant = "info">Info</Button>
-
+                    {UserAuth.isDirectivo() === true ?
                     <Button 
                         className="botonEvent"
                         variant = "primary"
                         onClick = {() => seleccionarActividad(actividad)}
-                    >Editar</Button>
-
+                    >Editar</Button>                    
+                    : <div></div>
+                    }
+                    {UserAuth.isDirectivo() === true ?
                     <Button 
                         className="botonEvent"
                         variant = "danger"
                         onClick = {() => deleteActividad(actividad.id)}
                     >Eliminar</Button>
+                    : <div></div>
+                    }
 
                     <Button
                         className="botonEvent postular"

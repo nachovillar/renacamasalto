@@ -189,8 +189,6 @@ const ActividadState = props => {
                 type:EVENTOS_ERROR
             })
         }
-
-        
     }
 
     const ocultarFormulario = () => {
