@@ -32,7 +32,7 @@ const Voluntario = ({voluntario}) => {
               Swal.fire(
                 'Reiniciada!',
                 'La contraseña se ha reiniciado satisfactoriamente',
-                'succes'
+                'success'
               )
             }
           })
