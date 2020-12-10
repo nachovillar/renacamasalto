@@ -30,6 +30,7 @@ const ActividadState = props => {
         fecha_hora_inicio:'',
         fecha_hora_termino:'',
         descripcion: '',
+        id_lugar: 1,
         cuota: null,
         cupos: null
     }
@@ -65,10 +66,6 @@ const ActividadState = props => {
             var listaEventos = []
             for(let i=0;i<respuesta.data.length;i++){
                 let evento = new Evento();
-                // let data = 'json={"id_evento":'+String(respuesta.data[i].id_evento)+'}'
-                // let inscritos = await clienteAxios.post('https://api.chilo.team/api/evento/mostrarDetalleEvento',data)
-                // console.log(inscritos)
-                
                 evento.id = respuesta.data[i].id_evento
                 evento.nombre = respuesta.data[i].nombre
                 evento.descripcion = respuesta.data[i].descripcion
@@ -106,7 +103,6 @@ const ActividadState = props => {
             evento.fecha_hora_inicio = actividad.fechaInicio+' '+actividad.horaInicio+':00'
             evento.fecha_hora_termino = actividad.fechaTermino+' '+actividad.horaTermino+':00'
             evento.descripcion = actividad.descripcion
-            evento.lugar = 'Espacio Vincula'
             const data = 'json='+JSON.stringify(evento)
             var respuesta = clienteAxios.post('https://api.chilo.team/api/evento/crear/', data)
             console.log(respuesta.data)
@@ -183,6 +179,7 @@ const ActividadState = props => {
             evento.fecha_hora_inicio = actividad.fechaInicio+' '+actividad.horaInicio
             evento.fecha_hora_termino = actividad.fechaTermino+' '+actividad.horaTermino
             evento.descripcion = actividad.descripcion
+            evento.id_lugar = 'Espacio Vincula'
             console.log(evento)
             const data = 'json='+JSON.stringify(evento)
             var respuesta = clienteAxios.post('https://api.chilo.team/api/evento/editar/'+actividad.id, data)
