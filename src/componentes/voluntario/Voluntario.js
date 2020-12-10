@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import voluntarioContext from '../../context/voluntario/VoluntarioContext'
 import './Voluntario.css'
+import {Button} from 'react-bootstrap'
 
 const Voluntario = ({voluntario}) => {
 
@@ -50,6 +51,13 @@ const Voluntario = ({voluntario}) => {
                 <div className="col-xs-12 valorRut">
                     <p>{voluntario.permisos}</p>
                 </div>
+            </div>
+            <div className="editarV">
+                <Button 
+                    className="botonEvent"
+                    variant = "primary"
+                    onClick = {() => seleccionarVoluntario(voluntario,'Editar')}
+                >Editar Permisos</Button>
             </div>
             
         </div>

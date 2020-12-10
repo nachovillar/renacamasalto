@@ -15,6 +15,7 @@ const FormVoluntario = () => {
 
     const [voluntario, guardarVoluntario] = useState({
         id_rut:'',
+        permisos:'',
     })
 
 
@@ -27,12 +28,13 @@ const FormVoluntario = () => {
         else{
             guardarVoluntario({
                 id_rut:'',
+                permisos:'',
             })
         }
 
     }, [voluntarioSeleccionada])
 
-    const {id_rut} = voluntario
+    const {id_rut,permisos} = voluntario
 
     
 
@@ -59,6 +61,7 @@ const FormVoluntario = () => {
 
         guardarVoluntario({
             id_rut:'',
+            permisos:'',
         })
 
     }
@@ -71,7 +74,7 @@ const FormVoluntario = () => {
                     variant = "danger"
                     type = "button"
                     onClick = {() => mostrarFormulario()}
-                >Crear Voluntario</Button>
+                >{voluntarioSeleccionada ? 'Editar Permisos':'Crear Voluntario'}</Button>
 
                 {formulario
                     ?(
@@ -88,7 +91,28 @@ const FormVoluntario = () => {
                                     />
                                 </Form.Group>
                             </div>
-            
+                            <div className = "inputbox">
+                                <Form.Group controlId="dob">
+                                    <Form.Label>Permisos</Form.Label>
+                                    <Form.Control as="select" 
+                                        name = "permisos"
+                                        type = "text" 
+                                        placeholder = "v-----"
+                                        value = {permisos}
+                                        onChange = {onChangeVoluntario}       
+                                    >
+                                        <option>v-----</option>
+                                        <option>vc----</option>
+                                        <option>v-c---</option>
+                                        <option>v--c--</option>
+                                        <option>vcc---</option>
+                                        <option>vc-c--</option>
+                                        <option>v-cc--</option>
+                                        <option>vcccd-</option>
+                                        <option>vcccda</option>
+                                    </Form.Control>
+                                </Form.Group>
+                            </div>
                             <div className="container">
                                 <div className="row botonesBeneficiario">
                                     <div className = "submitButton col-md-6 botonEditarB">
@@ -96,7 +120,7 @@ const FormVoluntario = () => {
                                                 variant = "success"
                                                 type = "submit"
                                                 className = "button-primary"
-
+                                                onClick = {()=> ocultarFormulario()}
                                         >{voluntarioSeleccionada ? 'Editar':'Agregar'}</Button>
                                     </div>
                                     <div className="submitButton col-md-6 botonCancelarB">
@@ -104,6 +128,7 @@ const FormVoluntario = () => {
                                             variant = "success"
                                             type = "submit"
                                             className = "btn-danger"
+                                            
                                             onClick={()=> ocultarFormulario()}
                                         >Cancelar</Button>
                                     </div>
@@ -111,7 +136,7 @@ const FormVoluntario = () => {
                             </div>
             
                         </Form>
-                    ) : null 
+                    ) : null
                 
                 }
 
