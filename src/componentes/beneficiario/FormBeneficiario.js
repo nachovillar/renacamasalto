@@ -96,8 +96,8 @@ const FormBeneficiario = () => {
                     className = "button-danger" 
                     variant = "danger"
                     type = "button"
-                    //onClick = {() => mostrarFormulario()}
-                >Editar Beneficiario</Button>
+                    onClick = {() => mostrarFormulario()}
+                >Nuevo Beneficiario</Button>
 
                 {formulario
                     ?(
@@ -130,6 +130,20 @@ const FormBeneficiario = () => {
                                 </Form.Group>
                             </div>
             
+                            <div className = "inputbox">
+                                <Form.Group controlId="dob">
+                                    <Form.Label>RUT</Form.Label>
+                                    <Form.Control
+                                        name = "id_rut"
+                                        type = "text" 
+                                        placeholder = "Ingrese su RUT"
+                                        value = {id_rut}
+                                        onChange = {onChangeBeneficiario}       
+                                    />
+                                    
+                                </Form.Group>
+                            </div>
+
                             <div className = "inputbox">
                                 <Form.Group controlId="dob">
                                     <Form.Label>Género</Form.Label>

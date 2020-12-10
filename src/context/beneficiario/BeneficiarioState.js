@@ -76,6 +76,15 @@ const BeneficiarioState = props => {
 
         try {
             //const user = jwt_decode(token)
+            if(beneficiario.genero === 'Masculino'){
+                beneficiario.genero = 'M'
+            }
+            else if(beneficiario.genero === 'Femenino'){
+                beneficiario.genero = 'F'
+            }
+            else if(beneficiario.genero === 'Otro'){
+                beneficiario.genero = 'X'
+            }
             const data = 'json='+JSON.stringify(beneficiario)
             console.log(data)      
 
