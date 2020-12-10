@@ -13,14 +13,14 @@ const FormBeneficiario = () => {
     
 
     const [beneficiario, guardarBeneficiario] = useState({
-        id: '',
+        id_rut: '',
         nombres: '',
         apellidos: '',
         genero:'',
-        fechaNacimiento:'',
+        fecha_nacimiento:'',
         telefono:'',
         ocupacion:'',
-        activo:'',
+        es_activo:'',
     })
 
 
@@ -32,20 +32,20 @@ const FormBeneficiario = () => {
         }
         else{
             guardarBeneficiario({
-                id: '',
+                id_rut: '',
                 nombres: '',
                 apellidos: '',
                 genero:'',
-                fechaNacimiento:'',
+                fecha_nacimiento:'',
                 telefono:'',
                 ocupacion:'',
-                activo:'',
+                es_activo:'',
             })
         }
 
     }, [beneficiarioSeleccionada])
 
-    const {id, nombres, apellidos, genero, fechaNacimiento, telefono, ocupacion, activo} = beneficiario
+    const {id_rut, nombres, apellidos, genero, fecha_nacimiento, telefono, ocupacion, es_activo} = beneficiario
 
     
 
@@ -60,7 +60,7 @@ const FormBeneficiario = () => {
     const onSubmitBeneficiario = e => {
         e.preventDefault()
 
-        if(id === '' || activo === '' || nombres === ''){
+        if(id_rut === '' || es_activo === '' || nombres === ''){
             mostrarError("null")
             return
         }
@@ -77,14 +77,14 @@ const FormBeneficiario = () => {
         }
 
         guardarBeneficiario({
-            id: '',
+            id_rut: '',
             nombres: '',
             apellidos: '',
             genero:'',
-            fechaNacimiento:'',
+            fecha_nacimiento:'',
             telefono:'',
             ocupacion:'',
-            activo:'',
+            es_activo:'',
         })
 
     }
@@ -142,6 +142,7 @@ const FormBeneficiario = () => {
                                     >
                                     <option>Masculino</option>
                                     <option>Femenino</option>
+                                    <option>Otro</option>
                                     </Form.Control>
                                 </Form.Group>
                             </div>
@@ -150,11 +151,11 @@ const FormBeneficiario = () => {
                                 <Form.Group controlId="dob">
                                     <Form.Label>Fecha de Nacimiento</Form.Label>
                                     <Form.Control 
-                                        name = "fechaNacimiento"
+                                        name = "fecha_nacimiento"
                                         type = "date" 
                                         id="start"
                                         placeholder = "Ingrese fecha"
-                                        value = {fechaNacimiento}
+                                        value = {fecha_nacimiento}
                                         onChange = {onChangeBeneficiario}       
                                     />
                                 </Form.Group>
@@ -190,10 +191,10 @@ const FormBeneficiario = () => {
                                 <Form.Group controlId="dob">
                                     <Form.Label>Activo(*)</Form.Label>
                                     <Form.Control as="select" 
-                                        name = "activo"
+                                        name = "es_activo"
                                         type = "text" 
                                         placeholder = "Ingrese Actividad"
-                                        value = {activo}
+                                        value = {es_activo}
                                         onChange = {onChangeBeneficiario}       
                                     >
                                         <option></option>

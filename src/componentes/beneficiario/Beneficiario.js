@@ -37,7 +37,7 @@ const Beneficiario = ({beneficiario}) => {
                 </div>
                 <div className="col-sm-12 col-md-3">
                     <h3>Fecha de Nacimiento</h3>
-                    <p>{beneficiario.fechaNacimiento}</p>
+                    <p>{beneficiario.fecha_nacimiento}</p>
                 </div>
             </div>
             <div className="row">
@@ -51,7 +51,7 @@ const Beneficiario = ({beneficiario}) => {
                 </div>
                 <div className="col-sm-12 col-md-4">
                     <h3>Activo (*)</h3>
-                    <p>{beneficiario.activo}</p>
+                    <p>{beneficiario.es_activo}</p>
                 </div>
             </div>
             <div className="editarB">

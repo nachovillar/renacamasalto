@@ -12,40 +12,12 @@ import{
     ACTUALIZAR_BENEFICIARIO,
     OCULTAR_FORMULARIO_B
 } from '../../types'
-
-import { v4 as uuidv4 } from 'uuid'
+import clienteAxios from '../../config/axios'
+import Beneficiario from '../../models/Beneficiario'
 
 const BeneficiarioState = props => {
 
-const listaBeneficiarios = [
-        {id: 1,
-         nombres: 'Papelucho',
-         apellidos: 'Principe',
-         genero : 'Masculino',
-         fechaNacimiento: '1991-10-12',
-         telefono: '911111111',
-         ocupacion: 'Viajero',
-         activo: '1'
-        },
-        {id: 2,
-            nombres: 'Lucila',
-            apellidos: 'Godoy',
-            genero : 'Femenino',
-            fechaNacimiento: '1889-04-07',
-            telefono: '911111110',
-            ocupacion: 'Escritora',
-            activo: '0'
-        },
-        {id: 3,
-            nombres: 'Condorito',
-            apellidos: 'Pepo',
-            genero : 'Masculino',
-            fechaNacimiento: '1949-06-08',
-            telefono: '9111111138',
-            ocupacion: 'Cómico',
-            activo: '1'
-       }
-]
+
 
     const initialState = {
         listaBeneficiarios: [
@@ -64,21 +36,76 @@ const listaBeneficiarios = [
     }
 
     const obtenerBeneficiarios = () => {
-        dispatch({
-            type: OBTENER_BENEFICIARIOS,
-            payload: listaBeneficiarios
+        clienteAxios.get('https://api.chilo.team/api/beneficiario/mostrar')
+        .then(response =>{
+            console.log(response.data)
+            var listaBeneficiarios = []
+            for(let i=0;i<response.data.length;i++){
+                let beneficiario = new Beneficiario();
+                beneficiario.id_rut = response.data[i].id_rut
+                beneficiario.nombres = response.data[i].nombres
+                beneficiario.apellidos = response.data[i].apellidos
+                if(response.data[i].genero === 'M'){
+                    beneficiario.genero = 'Masculino'
+                }
+                else if(response.data[i].genero === 'F'){
+                    beneficiario.genero = 'Femenino'
+                }
+                else if(response.data[i].genero === 'X'){
+                    beneficiario.genero = 'Otro'
+                }
+                beneficiario.telefono = response.data[i].telefono
+                beneficiario.ocupacion = response.data[i].ocupacion
+                beneficiario.fecha_nacimiento = response.data[i].fecha_nacimiento
+                beneficiario.es_activo = response.data[i].es_activo
+                const res = beneficiario
+                listaBeneficiarios.push(res)
+            }
+            dispatch({
+                type: OBTENER_BENEFICIARIOS,
+                payload: listaBeneficiarios
+            })
+
+        }).catch(error =>{
+            console.log(error)
         })
     }
 
     const agregarBeneficiario = beneficiario => {
-        beneficiario.id = uuidv4()
 
-        dispatch({
-            type: AGREGAR_BENEFICIARIO,
-            payload: beneficiario
-        })
+
+        try {
+            //const user = jwt_decode(token)
+            const data = 'json='+JSON.stringify(beneficiario)
+            console.log(data)      
+
+            clienteAxios.post('https://api.chilo.team/api/beneficiario/agregar', data)
+            .then(response => {
+                dispatch({
+                    type: AGREGAR_BENEFICIARIO,
+                    payload: beneficiario
+                })
+                console.log(response)
+                console.log("beneficiario agregado con exito")
+                window.location.replace('');
+            }).catch(error => {
+                console.log(error)
+                const alerta = {
+                    msg: error.response.mensaje,
+                    categoria: 'alerta-error'
+                }
+    
+                dispatch({
+                    type: null,
+                    payload: alerta
+                })
+            })
+        } catch (error){
+            dispatch({
+                type: null
+            })
+        }
     }
-
     const mostrarError = () => {
         dispatch({
             type: VALIDAR_FORMULARIO_B,
@@ -104,9 +131,27 @@ const listaBeneficiarios = [
     }
 
     const editarBeneficiario = beneficiario => {
-        dispatch({
-            type: ACTUALIZAR_BENEFICIARIO,
-            payload: beneficiario
+        console.log(beneficiario.genero)
+        if(beneficiario.genero === 'Masculino'){
+            beneficiario.genero = 'M'
+        }
+        else if(beneficiario.genero === 'Femenino'){
+            beneficiario.genero = 'F'
+        }
+        else if(beneficiario.genero === 'Otro'){
+            beneficiario.genero = 'X'
+        }
+        let data = "json="+JSON.stringify(beneficiario)
+        clienteAxios.post('https://api.chilo.team/api/beneficiario/editar/'+beneficiario.id_rut,data)
+        .then(response => {
+            dispatch({
+                type: ACTUALIZAR_BENEFICIARIO,
+                payload: beneficiario
+            })
+            console.log(response)
+            window.location.replace('')
+        }).catch(error =>{
+            console.log(error)
         })
     }
 

@@ -27,7 +27,7 @@ const ListadoBeneficiarios = () => {
                     :   <TransitionGroup>
                             {listaBeneficiarios.map(beneficiario => (
                                 <CSSTransition
-                                    key = {beneficiario.id}
+                                    key = {beneficiario.id_rut}
                                     timeout = {200}
                                     className = "Beneficiario"
                                 >

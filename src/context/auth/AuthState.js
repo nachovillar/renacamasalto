@@ -66,7 +66,7 @@ const AuthState = props => {
             }).catch(error => {
                 console.log(error)
                 const alerta = {
-                    msg: error.response.mensaje,
+                    msg: error.response.data.status,
                     categoria: 'alerta-error'
                 }
     
