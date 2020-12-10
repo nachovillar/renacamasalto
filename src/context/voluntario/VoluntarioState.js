@@ -23,11 +23,7 @@ const VoluntarioState = props => {
 
     var voluntario = {
         id_rut: ''
-    }
-
-    const listaVoluntarios = null
-
-    
+    }    
 
     const initialState = {
         listaVoluntarios: [
@@ -99,7 +95,7 @@ const VoluntarioState = props => {
                     payload: voluntario
                 })
                 console.log(response)
-                console.log("ingreso")
+                console.log("se agregó con exito")
                 window.location.replace('');
 
             }).catch(error => {
@@ -146,10 +142,31 @@ const VoluntarioState = props => {
     }
 
     const editarVoluntario = voluntario => {
-        dispatch({
-            type: ACTUALIZAR_VOLUNTARIO,
-            payload: voluntario
+
+        let data = 'json='+JSON.stringify(voluntario)
+        console.log(data)
+        clienteAxios.post('https://api.chilo.team/api/user/cambiarPermisos',data)
+        .then(response =>{
+            dispatch({
+                type: ACTUALIZAR_VOLUNTARIO,
+                payload: voluntario
+            })
+            console.log(response)
+            console.log("se agregó con exito")
+            window.location.replace('');
+        }).catch(error =>{
+            console.log(error)
+            const alerta = {
+                msg: error.response.mensaje,
+                categoria: 'alerta-error'
+            }
+
+            dispatch({
+                type: null,
+                payload: alerta
+            })
         })
+        
     }
 
     const ocultarFormulario = () => {

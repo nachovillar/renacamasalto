@@ -18,6 +18,9 @@ import clienteAxios from '../../config/axios'
 import tokenAuth from '../../config/token'
 import Evento from '../../models/Evento'
 import userAuth from '../../componentes/auth/UserAuth'
+import Swal from 'sweetalert2'
+import voluntarioContext from '../voluntario/VoluntarioContext'
+import { findAllByDisplayValue } from '@testing-library/react'
 
 const ActividadState = props => {
 
@@ -203,6 +206,55 @@ const ActividadState = props => {
     }
 
     const postularActividad = id => {
+
+        let e = 'json={"id_evento":'+String(id)+'}'
+        clienteAxios.post('https://api.chilo.team/api/evento/mostrarDetalleEvento',e)
+        .then(response=>{
+            
+            let jsonInscritos = response.data.inscritos.id_voluntarios_inscritos
+            var existe = false 
+            for(let i=0;i<jsonInscritos.length;i++){
+                if(jsonInscritos[i].id_voluntario === userAuth.id_rut){
+                    existe = true
+                }
+             }
+            if(existe){
+                console.log("voluntai inscrito")
+                Swal.fire({
+                        title: 'Usted está inscrito',
+                        text: "¿Desea desinscribirse?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, desincribirme'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        postulo(id)
+                    }
+                })
+            }else{
+                console.log("voluntai NO inscrito")
+                Swal.fire({
+                        title: 'Usted no está inscrito',
+                        text: "¿Desea inscribirse?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Si, incribirme'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        postulo(id)
+                    }
+                })
+            }
+             
+        })
+
+    }
+
+    const postulo = id => {
         let data = 'json={"id_evento":'+String(id)+',"id_rut":"'+userAuth.id_rut+'"}'
         console.log(data)
         clienteAxios.post('https://api.chilo.team/api/user/postular', data)
@@ -215,7 +267,6 @@ const ActividadState = props => {
         }).catch(error =>{
             console.log(error)
         })
-        
     }
 
     const retirarActividad = id => {

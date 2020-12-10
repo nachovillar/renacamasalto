@@ -3,6 +3,7 @@ import voluntarioContext from '../../context/voluntario/VoluntarioContext'
 import './Voluntario.css'
 import {Button} from 'react-bootstrap'
 import Swal from 'sweetalert2'
+import clienteAxios from '../../config/axios'
 
 const Voluntario = ({voluntario}) => {
 
@@ -19,6 +20,7 @@ const Voluntario = ({voluntario}) => {
         mostrarFormulario()
     }
     function alerta(){
+        seleccionarVoluntario(voluntario,'Editar')
         Swal.fire({
             title: '¿Estás seguro(a)?',
             text: "No se podra revertir!",
@@ -29,11 +31,24 @@ const Voluntario = ({voluntario}) => {
             confirmButtonText: 'Si, reiniciar'
           }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire(
-                'Reiniciada!',
-                'La contraseña se ha reiniciado satisfactoriamente',
-                'success'
-              )
+                let data = 'json={"id_rut":"'+voluntario.id_rut+'"}'
+                clienteAxios.post('https://api.chilo.team/api/user/reiniciarPassword',data)
+                .then(response=>{
+                    Swal.fire(
+                        'Reiniciada!',
+                        'La contraseña se ha reiniciado satisfactoriamente',
+                        'success'
+                    )
+                    console.log(response)
+                }).catch(error=>{
+                    console.log(error)
+                    Swal.fire(
+                        'Error',
+                        'Usuario no encontrado',
+                        'error'
+                    )
+                })
+                
             }
           })
     }

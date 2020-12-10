@@ -67,12 +67,8 @@ const Actividad = ({actividad}) => {
                     <Button
                         className="botonEvent postular"
                         onClick = {() => postularEvento(actividad.id)}
-                    >Inscribir a evento</Button>
-                    <Button
-                        className="botonEvent"
-                        variant = "warning"
-                        onClick = {() => retirarActividad(actividad.id)}
-                    >Desinscribir</Button>
+                    >(Des)Inscribir a evento</Button>
+                    
                     </div>
                 </div>
             </li>

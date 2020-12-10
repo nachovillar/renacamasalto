@@ -5,6 +5,7 @@ import './FormVoluntario.css'
 
 import voluntarioContext from '../../context/voluntario/VoluntarioContext'
 import { cleanData } from 'jquery'
+import userAuth from '../auth/UserAuth'
 
 const FormVoluntario = () => {
 
@@ -56,12 +57,16 @@ const FormVoluntario = () => {
         if(voluntarioSeleccionada === null){
             agregarVoluntario(voluntario)
             ocultarFormulario()
+        }else{
+            editarVoluntario(voluntario)
         }
 
         guardarVoluntario({
             id_rut:'',
             permisos:'',
         })
+    }
+    const onSubmitPermisos = e => {
 
     }
     
@@ -69,16 +74,16 @@ const FormVoluntario = () => {
         <Fragment>
             <div className = "nuevo-voluntario">
                 
-
-                {formulario
-                    ?(
-                        <Form onSubmit = {onSubmitVoluntario}>
-                            <Button
+            <Button
                                 className = "button-danger" 
                                 variant = "danger"
                                 type = "button"
                                 onClick = {() => mostrarFormulario()}
                             >{voluntarioSeleccionada ? 'Editar Permisos':'Crear Voluntario'}</Button>
+                {formulario
+                    ?(
+                        <Form onSubmit = {onSubmitVoluntario}>
+                            
                             <div className = "inputbox">
                                 <Form.Group>
                                     <Form.Label>RUT</Form.Label>
@@ -87,7 +92,7 @@ const FormVoluntario = () => {
                                         type = "text" 
                                         placeholder = "Ej: 12345678-9"
                                         value = {id_rut}
-                                        //onChange = {onChangeVoluntario}       
+                                        onChange = {onChangeVoluntario}       
                                     />
                                 </Form.Group>
                             </div>
@@ -108,8 +113,11 @@ const FormVoluntario = () => {
                                         <option>vcc---</option>
                                         <option>vc-c--</option>
                                         <option>v-cc--</option>
-                                        <option>vcccd-</option>
-                                        <option>vcccda</option>
+                                        {userAuth.isAdmin ? 
+                                        <option>vcccd-</option> : <div></div>
+                                        }
+                                        
+
                                     </Form.Control>
                                 </Form.Group>
                             </div>
@@ -120,7 +128,7 @@ const FormVoluntario = () => {
                                                 variant = "success"
                                                 type = "submit"
                                                 className = "button-primary"
-
+                                                onClick={()=> onSubmitVoluntario}
                                         >{voluntarioSeleccionada ? 'Editar':'Agregar'}</Button>
                                     </div>
                                     <div className="submitButton col-md-6 botonCancelarB">
@@ -138,12 +146,7 @@ const FormVoluntario = () => {
                         </Form>
                     ) : (
                         <div>
-                        <Button
-                            className = "button-danger" 
-                            variant = "danger"
-                            type = "button"
-                            onClick = {() => ocultarFormulario()}
-                        >Crear Voluntario</Button>
+                        
                         <Form onSubmit = {onSubmitVoluntario}>
                         <div className = "inputbox">
                                 <Form.Group>
@@ -173,8 +176,11 @@ const FormVoluntario = () => {
                                         <option>vcc---</option>
                                         <option>vc-c--</option>
                                         <option>v-cc--</option>
-                                        <option>vcccd-</option>
-                                        <option>vcccda</option>
+                                        {userAuth.isAdmin ? 
+                                        <option>vcccd-</option> : <div></div>
+                                        }
+                                        
+
                                     </Form.Control>
                                 </Form.Group>
                             </div>
