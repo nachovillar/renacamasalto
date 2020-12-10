@@ -197,7 +197,6 @@ const FormBeneficiario = () => {
                                         value = {es_activo}
                                         onChange = {onChangeBeneficiario}       
                                     >
-                                        <option></option>
                                         <option>0</option>
                                         <option>1</option>
                                     </Form.Control>
