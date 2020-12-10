@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import voluntarioContext from '../../context/voluntario/VoluntarioContext'
 import './Voluntario.css'
 import {Button} from 'react-bootstrap'
+import Swal from 'sweetalert2'
 
 const Voluntario = ({voluntario}) => {
 
@@ -17,7 +18,25 @@ const Voluntario = ({voluntario}) => {
         guardarVoluntarioActual(voluntario)
         mostrarFormulario()
     }
-     
+    function alerta(){
+        Swal.fire({
+            title: '¿Estás seguro(a)?',
+            text: "No se podra revertir!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, reiniciar'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Reiniciada!',
+                'La contraseña se ha reiniciado satisfactoriamente',
+                'succes'
+              )
+            }
+          })
+    }
 
     return(
 
@@ -52,12 +71,21 @@ const Voluntario = ({voluntario}) => {
                     <p>{voluntario.permisos}</p>
                 </div>
             </div>
-            <div className="editarV">
-                <Button 
-                    className="botonEvent"
-                    variant = "primary"
-                    onClick = {() => seleccionarVoluntario(voluntario,'Editar')}
-                >Editar Permisos</Button>
+            <div className = "row justify-content-center">
+                <div className="editarV">
+                    <Button 
+                        className="botonEvent"
+                        variant = "primary"
+                        onClick = {() => seleccionarVoluntario(voluntario,'Editar')}
+                    >Editar Permisos</Button>
+                </div>
+                <div className="editarCont">
+                    <Button 
+                        className="botonEvent"
+                        variant = "warning"
+                        onClick = {() => alerta()}
+                    >Reiniciar Contraseña</Button>
+                </div>
             </div>
             
         </div>
