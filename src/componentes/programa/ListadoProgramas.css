@@ -2,8 +2,17 @@
     background-color: whitesmoke;
     border-radius: 10px;
     padding-bottom: 1rem;
+    
 }
 
 .listado-programas{
     padding: 0 3rem;
+    list-style: none;
+}
+.programaSinS{
+    list-style: none;
+    height: 20.67rem;
+}
+.programaSinS p{
+    text-align: center;
 }

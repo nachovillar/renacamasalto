@@ -59,7 +59,7 @@ const Barra = (props) => {
     return ( 
         
         <div className="container-fluid contenedorBarra">
-            <Navbar collapseOnSelect expand="sm">
+            <Navbar collapseOnSelect expand="md">
                 <Navbar.Brand href="/"><img className="logoBarra" src={logo} alt="Logo Reñaca más alto"></img></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">

@@ -80,7 +80,7 @@ const FormPrograma = () => {
     
     return (
         <Fragment>
-
+            <div className="nuevo-programa">
             <Button variant="primary" onClick={handleShow}>
                 Nueva Sesion
             </Button>
@@ -147,17 +147,22 @@ const FormPrograma = () => {
                                 </Table>
                                 
                         </div>
-                        <Button variant="secondary" onClick={handleClose}>
-                        Cerrar
-                    </Button>
-
-                    <Button type = "submit" variant="primary" >
-                        Guardar Cambios
-                    </Button>
+                        <div className="row justify-content-center">
+                            <div className="botonCerrarP">
+                                <Button variant="secondary" onClick={handleClose}>
+                                Cerrar
+                                </Button>
+                            </div>
+                            <div>
+                                <Button type = "submit" variant="primary" >
+                                    Guardar Cambios
+                                </Button>
+                            </div>
+                        </div>
                     </Form>
                 </Modal.Body>
             </Modal>
-
+            </div>
 
             {/* <div>
                 {formulario

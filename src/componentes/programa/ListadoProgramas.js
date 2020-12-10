@@ -13,7 +13,7 @@ const ListadoProgramas = () => {
     //     obtenerProgramas()
     // }, [])
 
-    if(listaProgramas.length === 0) return null
+    //if(listaProgramas.length === 0) return null
 
     return (  
 
@@ -21,7 +21,7 @@ const ListadoProgramas = () => {
             <h2 className="titEvento">Programas</h2>
             <ul className = "listado-programas">
                 {listaProgramas.length === 0
-                    ?   (<li className = "programa"><p>No Hay Tareas en su Calendario</p></li>)
+                    ?   (<li className = "programaSinS"><p>No Hay Sesiones</p></li>)
                     :   <TransitionGroup>
                             {listaProgramas.map(programa => (
                                 <CSSTransition

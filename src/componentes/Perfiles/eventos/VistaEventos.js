@@ -8,7 +8,7 @@ const VistaEventos = () => {
         <div className="vista-lista-beneficiarios">
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-sm-12 col-md-4">
+                    <div className="col-sm-12 col-md-4 ">
                         <Sidebar/>
                     </div>
                     <div className="col-sm-12 col-md-8">
