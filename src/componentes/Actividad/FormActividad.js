@@ -122,7 +122,7 @@ const FormActividad = () => {
                                     <Form.Control 
                                         name = "fechaInicio"
                                         type = "date" 
-                                        placeholder = "Ingrese el nombre de la actividad"
+                                        placeholder = "Fecha inicio de la actividad"
                                         value = {actividad.fechaInicio}
                                         onChange = {onChangeActividad}       
                                     />
@@ -135,7 +135,7 @@ const FormActividad = () => {
                                     <Form.Control 
                                         name = "fechaTermino"
                                         type = "date" 
-                                        placeholder = "Ingrese el nombre de la actividad"
+                                        placeholder = "Fecha de terminp de la actividad"
                                         value = {actividad.fechaTermino}
                                         onChange = {onChangeActividad}       
                                     />
