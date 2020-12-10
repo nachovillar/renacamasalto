@@ -66,7 +66,7 @@ const AuthState = props => {
             }).catch(error => {
                 console.log(error)
                 const alerta = {
-                    msg: error.response.data.status,
+                    msg: 'Rut o Contraseña Ingresados Incorrectamente',
                     categoria: 'alerta-error'
                 }
     
